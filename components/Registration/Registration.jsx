@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik';
 import TextField from '@mui/material/TextField';
 import * as Yup from 'yup';
 import Button from '@mui/material/Button';
+import classes from './Registration.module.scss';
 
 const initialValues = {
   username: '',
@@ -30,14 +31,14 @@ function Registration() {
   };
 
   return (
-    <div>
+    <div className={classes.registration_block}>
       <Formik
-        initialValues
-        validate={SignupSchema}
+        initialValues={initialValues}
+        validationSchema={SignupSchema}
         onSubmit={(values) => handleSubmit(values)}
       >
-        {({ values, errors, touched, handleChange, handleSubmit }) => (
-          <Form>
+        {({ values, errors, touched, handleChange }) => (
+          <Form className={classes.form_inputs}>
             <TextField
               id='outlined-basic'
               label='Username'
