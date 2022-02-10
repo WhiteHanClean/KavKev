@@ -38,6 +38,7 @@ function Registration() {
 
   return (
     <div className={classes.registration_block}>
+      <h1>Регистрасия</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={SignupSchema}
