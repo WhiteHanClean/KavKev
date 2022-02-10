@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { signUpReducer } from './products/registration.slice';
 
-import rootReducer from './reducers';
-
-const store = configureStore({ reducer: rootReducer });
+export const store = configureStore({
+  reducer: { signUp: signUpReducer },
+});

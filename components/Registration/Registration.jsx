@@ -4,7 +4,8 @@ import TextField from '@mui/material/TextField';
 import * as Yup from 'yup';
 import Button from '@mui/material/Button';
 import classes from './Registration.module.scss';
-
+import { useDispatch } from 'react-redux';
+import { signUpUser } from '../../redux/products/registration.slice';
 const initialValues = {
   username: '',
   password: '',
@@ -26,8 +27,9 @@ const SignupSchema = Yup.object().shape({
 });
 
 function Registration() {
-  const handleSubmit = (values) => {
-    console.log(values);
+  const dispatch = useDispatch();
+  const handleSubmit = async (values) => {
+    dispatch(signUpUser(values));
   };
 
   return (
