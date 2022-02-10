@@ -1,12 +1,6 @@
-import React from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Navigation, FreeMode } from "swiper";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
 import logo from "../assets/logo2.png";
 import logo2 from "../assets/lol.jpg";
 import Logos from "../components/logos";
@@ -15,55 +9,64 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import ICard from "../components/ICard/ICard";
 
+const array = [
+  {
+    name: "moloko",
+    id: 1,
+    image: logo2,
+  },
+  {
+    name: "мясо",
+    id: 2,
+    image: logo2,
+  },
+  {
+    name: "idi nuhui",
+    id: 3,
+    image: logo2,
+  },
+  {
+    name: "wsef",
+    id: 4,
+    image: logo2,
+  },
+  {
+    name: "wsefaw",
+    id: 4,
+    image: logo2,
+  },
+  {
+    name: "wsefaw",
+    id: 4,
+    image: logo2,
+  },
+  {
+    name: "wsefaw",
+    id: 4,
+    image: logo2,
+  },
+  {
+    name: "wsefaw",
+    id: 4,
+    image: logo2,
+  },
+];
 const index = () => {
-  const array = [
-    {
-      name: "moloko",
-      id: 1,
-      image: logo2,
-    },
-    {
-      name: "мясо",
-      id: 2,
-      image: logo2,
-    },
-    {
-      name: "idi nuhui",
-      id: 3,
-      image: logo2,
-    },
-    {
-      name: "wsef",
-      id: 4,
-      image: logo2,
-    },
-    {
-      name: "wsefaw",
-      id: 4,
-      image: logo2,
-    },
-    {
-      name: "wsefaw",
-      id: 4,
-      image: logo2,
-    },
-    {
-      name: "wsefaw",
-      id: 4,
-      image: logo2,
-    },
-    {
-      name: "wsefaw",
-      id: 4,
-      image: logo2,
-    },
-  ];
+  const [width, setWidth] = useState(0);
 
-  //    const handleClickPageProduct = (id) => {
-  //         <Link href={`/category/${id}`}>
-  //         </Link>
-  //     }
+  const handleWindowResize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    // component is mounted and window is available
+    handleWindowResize();
+    window.addEventListener("resize", handleWindowResize);
+    // unsubscribe from the event on component unmount
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
   return (
     <div>
       <Logos image={logo.src} />
@@ -79,10 +82,9 @@ const index = () => {
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
-        
         centeredSlides={true}
         centeredSlidesBounds={true}
-        slidesPerView={3}
+        slidesPerView={width <= 475 ? 1 : 3}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -90,36 +92,20 @@ const index = () => {
           modifier: 1,
           slideShadows: false,
         }}
-        navigation={true}
+        navigation={width <= 475 ? false : true}
         pagination={{ clickable: true }}
         modules={[EffectCoverflow, Pagination, Navigation]}
-        style={{width: "80%",marginBottom: "200px", padding: "40px", boxSizing: "border-box"}}
-       
+        style={{
+          width: "80%",
+          marginBottom: "200px",
+          padding: "40px 0px 40px 0px",
+          boxSizing: "border-box",
+        }}
       >
-        {array.map((item) => {
+        {array.map((item, index) => {
           return (
-            <SwiperSlide>
-              <Card sx={{ width: "80%", marginLeft: "10%"}}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    image={item.image.src}
-                    alt={item.name}
-                  />
-                  <CardContent
-                    style={{ textAlign: "start", marginTop: "16px" }}
-                  >
-                    <Typography gutterBottom variant="h5" component="div">
-                      {item.name}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Подробнее
-                  </Button>
-                </CardActions>
-              </Card>
+            <SwiperSlide key={`item_${index}`}>
+              <ICard item={item} />
             </SwiperSlide>
           );
         })}
