@@ -65,7 +65,7 @@ const index = () => {
                 fontSize:'35px',
                 marginTop:'30px',
                 textAlign: 'center',
-                
+                 
             }}>Категории продуктов</h1>
            <div style={{
                display:'flex',
