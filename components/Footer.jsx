@@ -49,3 +49,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+// я лох
