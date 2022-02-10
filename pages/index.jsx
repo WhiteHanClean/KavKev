@@ -24,7 +24,7 @@ const index = () => {
             image:logo2
         },
         {
-            name:'wsefaw',
+            name:'wsef',
             id:4,
             image:logo2
         }
@@ -60,13 +60,13 @@ const index = () => {
 //     }
     return (
         <div>
-            <Logos image={logo.src}/>
+            <Logos image={logo.src} />
             <h1 style={{
                 fontSize:'35px',
-                margin:'0 auto',
                 marginTop:'30px',
-                width:'20px'
-            }}>Категории</h1>
+                textAlign: 'center',
+                
+            }}>Категории продуктов</h1>
            <div style={{
                display:'flex',
                flexWrap:'wrap',

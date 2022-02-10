@@ -5,7 +5,7 @@ import ha from '../assets/halal.png'
 const Footer = () => {
     return (
         <div style={{
-            height:'250px'
+            height:'251px'
         }}>
             <hr style={{
                 border:'1px solid black',
@@ -49,3 +49,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+// я лох
