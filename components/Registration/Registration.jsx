@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import Button from '@mui/material/Button';
 import classes from './Registration.module.scss';
 import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import { signUpUser } from '../../redux/products/registration.slice';
 const initialValues = {
   username: '',
@@ -16,8 +17,7 @@ const initialValues = {
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
     .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+    .required('Введите номер телефона корректно!'),
   password: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
@@ -27,9 +27,13 @@ const SignupSchema = Yup.object().shape({
 });
 
 function Registration() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const handleSubmit = async (values) => {
-    dispatch(signUpUser(values));
+    await dispatch(signUpUser(values));
+    if (localStorage.getItem('access')) {
+      router.push('/');
+    }
   };
 
   return (
@@ -42,9 +46,10 @@ function Registration() {
         {({ values, errors, touched, handleChange }) => (
           <Form className={classes.form_inputs}>
             <TextField
-              id='outlined-basic'
-              label='Username'
+              id='outlined-basic_1'
+              label='Телефон'
               variant='outlined'
+              type='number'
               name='username'
               value={values.username}
               onChange={handleChange}
@@ -53,10 +58,11 @@ function Registration() {
               <p className={'text-danger'}>{errors.username}</p>
             )}
             <TextField
-              id='outlined-basic'
-              label='Password'
+              id='outlined-basic_2'
+              label='Пароль'
               variant='outlined'
               name='password'
+              type='password'
               value={values.password}
               onChange={handleChange}
             />
@@ -64,8 +70,8 @@ function Registration() {
               <p className={'text-danger'}>{errors.password}</p>
             )}
             <TextField
-              id='outlined-basic'
-              label='First name'
+              id='outlined-basic_3'
+              label='Имя'
               name='first_name'
               variant='outlined'
               value={values.first_name}
@@ -75,8 +81,8 @@ function Registration() {
               <p className={'text-danger'}>{errors.first_name}</p>
             )}
             <TextField
-              id='outlined-basic'
-              label='Last name'
+              id='outlined-basic_4'
+              label='Фамилия'
               variant='outlined'
               name='last_name'
               value={values.last_name}

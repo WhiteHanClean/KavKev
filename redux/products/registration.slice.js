@@ -11,8 +11,6 @@ const initialState = {
   username: null,
   ids: [],
   entities: {},
-  access: null,
-  refresh: null,
 };
 
 export const signUpAdapter = createEntityAdapter();
@@ -24,12 +22,14 @@ export const signUpUser = createAsyncThunk(
   'registration/signUpUser',
   async ({ username, password, first_name, last_name }) => {
     try {
-      await $api.post('registration/', {
-        username,
-        password,
-        first_name,
-        last_name,
-      });
+      await $api
+        .post('/registration/', {
+          username,
+          password,
+          first_name,
+          last_name,
+        })
+        .then((data) => localStorage.setItem('access', data.data.token));
     } catch (e) {
       return e.error.message;
     }
@@ -48,16 +48,13 @@ const signUpSlice = createSlice({
     builder.addCase(signUpUser.fulfilled, (state, action) => {
       state.loading = false;
       state.username = action.payload;
-      state.token = action.payload.access;
-      state.refresh = action.payload.refresh;
+      console.log(action);
       state.error = null;
     });
     builder.addCase(signUpUser.rejected, (state, action) => {
       state.error = action.error.message;
       state.username = null;
       state.loading = false;
-      state.refresh = null;
-      state.access = null;
     });
   },
 });
