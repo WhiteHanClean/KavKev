@@ -24,7 +24,7 @@ const index = () => {
             image:logo2
         },
         {
-            name:'wsefaw',
+            name:'wsef',
             id:4,
             image:logo2
         }
