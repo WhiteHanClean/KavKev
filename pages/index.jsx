@@ -66,7 +66,7 @@ const index = () => {
                 marginTop:'30px',
                 textAlign: 'center',
                 
-            }}>Категории продуктов</h1>
+            }}>Категории прод</h1>
            <div style={{
                display:'flex',
                flexWrap:'wrap',
