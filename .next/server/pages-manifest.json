@@ -2,9 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-<<<<<<< HEAD
+  "/registration": "pages/registration.js",
   "/": "pages/index.js"
-=======
-  "/registration": "pages/registration.js"
->>>>>>> main
 }
