@@ -7,6 +7,9 @@ import classes from './Registration.module.scss';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { signUpUser } from '../../redux/products/registration.slice';
+import logo from '../../assets/logo2.png';
+import Image from 'next/image';
+
 const initialValues = {
   username: '',
   password: '',
@@ -38,7 +41,16 @@ function Registration() {
 
   return (
     <div className={classes.registration_block}>
-      <h1>Регистрасия</h1>
+      <div className={classes.logo_img}>
+        <Image src={logo} alt={logo} width={100} height={100} />
+      </div>
+      <h1>кастрация</h1>
+      <div>
+        <h3 className={classes.about_signup}>
+          Просим ввести настоящие данные так как выдача приза возможна только
+          при наличии паспорта или аналогичного идентифицирующего документа
+        </h3>
+      </div>
       <Formik
         initialValues={initialValues}
         validationSchema={SignupSchema}
