@@ -1,8 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 .registration_block {
+  font-family: 'Roboto', sans-serif;
+  h1 {
+    text-align: center;
+  }
+  .logo_img {
+    display: flex;
+    justify-content: center;
+  }
+  .about_signup {
+    text-align: center;
+    line-height: 30px;
+    margin-bottom: 70px;
+  }
   height: 100vh;
-  width: 100vw;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 70px;
   .form_inputs {
     display: grid;
-    gap: 10px;
+    gap: 20px;
+  }
+  .text_danger {
+    color: #ff0015;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
   }
 }

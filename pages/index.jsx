@@ -72,9 +72,9 @@ const index = () => {
       <Logos image={logo.src} />
       <h1
         style={{
-          fontSize: "35px",
-          marginTop: "30px",
-          textAlign: "center",
+          fontSize: '35px',
+          marginTop: '30px',
+          textAlign: 'center',
         }}
       >
         Категории продуктов
