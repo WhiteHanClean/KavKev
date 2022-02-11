@@ -14,16 +14,13 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { loginUser } from "./usersToken";
 
 const Autorization = () => {
   const [values, setValues] = React.useState({
     password: "",
     showPassword: false,
   });
-
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
 
   const handleClickShowPassword = () => {
     setValues({
@@ -54,7 +51,7 @@ const Autorization = () => {
       alert("Заполните все  поля!");
       return;
     } else {
-      console.log(state);
+      loginUser(state);
     }
   }
 
@@ -69,48 +66,57 @@ const Autorization = () => {
           С Возвращением!
           <br /> Введите номер телефона
         </h6>
-        <TextField
-          id="outlined-basic"
-          label="Номер телефона"
-          variant="outlined"
-          sx={{ width: "100%" }}
-          name="username"
-          onChange={handleValues}
-          type="number"
-        />
-        <h6 htmlFor="">Введите пароль</h6>
-        <FormControl sx={{ width: "100%" }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">
-            Password
-          </InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={values.showPassword ? "text" : "password"}
+        <form>
+          <TextField
+            id="outlined-basic"
+            label="Номер телефона"
+            variant="outlined"
+            sx={{ width: "100%" }}
+            name="username"
             onChange={handleValues}
-            name="password"
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
+            type="text"
           />
-        </FormControl>
-        <Button
-          variant="contained"
-          className={cl.button}
-          onClick={() => check()}
+
+          <h6 htmlFor="">Введите пароль</h6>
+          <FormControl sx={{ width: "100%" }} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">
+              Password
+            </InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-password"
+              type={values.showPassword ? "text" : "password"}
+              onChange={handleValues}
+              name="password"
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Password"
+            />
+          </FormControl>
+          <Button
+            variant="contained"
+            className={cl.button}
+            onClick={() => check()}
+            type="submit"
+          >
+            ВОЙТИ
+          </Button>
+        </form>
+        <a
+          href="https://wa.me/+996559595139"
+          style={{ textDecoration: "none" }}
         >
-          ВОЙТИ
-        </Button>
-        <p>Забыли пароль?</p>
+          <p>Забыли пароль?</p>
+        </a>
       </div>
     </div>
   );
