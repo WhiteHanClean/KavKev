@@ -9,8 +9,6 @@ const initialState = {
   loading: false,
   error: null,
   username: null,
-  ids: [],
-  entities: {},
 };
 
 export const signUpAdapter = createEntityAdapter();
