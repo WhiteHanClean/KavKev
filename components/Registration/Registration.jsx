@@ -7,6 +7,8 @@ import classes from './Registration.module.scss';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { signUpUser } from '../../redux/products/registration.slice';
+
+
 const initialValues = {
   username: '',
   password: '',
@@ -38,6 +40,7 @@ function Registration() {
 
   return (
     <div className={classes.registration_block}>
+      <h1>Регистрасия</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={SignupSchema}
@@ -55,7 +58,7 @@ function Registration() {
               onChange={handleChange}
             />
             {errors.username && touched.username && (
-              <p className={'text-danger'}>{errors.username}</p>
+              <p className={classes.text_danger}>{errors.username}</p>
             )}
             <TextField
               id='outlined-basic_2'
@@ -67,7 +70,7 @@ function Registration() {
               onChange={handleChange}
             />
             {errors.password && touched.password && (
-              <p className={'text-danger'}>{errors.password}</p>
+              <p className={classes.text_danger}>{errors.password}</p>
             )}
             <TextField
               id='outlined-basic_3'
@@ -78,7 +81,7 @@ function Registration() {
               onChange={handleChange}
             />
             {errors.first_name && touched.first_name && (
-              <p className={'text-danger'}>{errors.first_name}</p>
+              <p className={classes.text_danger}>{errors.first_name}</p>
             )}
             <TextField
               id='outlined-basic_4'
@@ -89,7 +92,7 @@ function Registration() {
               onChange={handleChange}
             />
             {errors.last_name && touched.last_name && (
-              <p className={'text-danger'}>{errors.last_name}</p>
+              <p className={classes.text_danger}>{errors.last_name}</p>
             )}
             <Button type='submit' variant='contained'>
               Регистрация

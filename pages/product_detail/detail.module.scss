@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.container{
+    width: 1200px;
+    margin: 0 auto;
+    .container_home{
+        width: 100%;
+    }
+    .category_item{
+        width: 100%;
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: space-between;
+    }
+    .category_title{
+        margin-top: 30px;
+        margin-bottom: 45px;
+        border: 1px solid gray;
+        border-radius: 30px;
+        padding-top: 2px;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+    .category_img{
+        padding-top: 10px;
+        display: block;
+        margin: 0 auto;
+    }
+}
