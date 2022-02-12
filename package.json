@@ -22,7 +22,7 @@
     "react-redux": "^7.2.6",
     "sass": "^1.49.7",
     "scss": "^0.2.4",
-    "swiper": "^8.0.4",
+    "swiper": "^7.3.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

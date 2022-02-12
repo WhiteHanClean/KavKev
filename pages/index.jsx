@@ -11,6 +11,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import ICard from '../components/ICard/ICard';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const array = [
   {
@@ -61,7 +62,6 @@ const array = [
 ];
 const index = () => {
   const [width, setWidth] = useState(0);
-
   const handleWindowResize = () => {
     setWidth(window.innerWidth);
   };
@@ -118,7 +118,7 @@ const index = () => {
         {array.map((item, index) => {
           return (
             <SwiperSlide key={`item_${index}`}>
-              <ICard item={item} />
+              <ICard item={item} key={item.id} />
             </SwiperSlide>
           );
         })}
