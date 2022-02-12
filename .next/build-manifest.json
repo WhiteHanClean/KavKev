@@ -30,10 +30,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/registration": [
+    "/category/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/registration.js"
+      "static/chunks/pages/category/[id].js"
+    ],
+    "/product_detail/product-detail": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/product_detail/product-detail.js"
     ]
   },
   "ampFirstPages": []
