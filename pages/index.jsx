@@ -1,103 +1,121 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination, Navigation, FreeMode } from "swiper";
+import logo from "../assets/logo2.png";
+import logo2 from "../assets/lol.jpg";
+import Logos from "../components/logos";
+import Footer from "../components/Footer";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import ICard from "../components/ICard/ICard";
 import Link from 'next/link';
-import logo from '../assets/logo2.png'
-import logo2 from '../assets/lol.jpg'
 
 
-import Logos from '../components/logos';
-import Footer from '../components/Footer';
+const array = [
+  {
+    name: "moloko",
+    id: 1,
+    image: logo2,
+  },
+  {
+    name: "мясо",
+    id: 2,
+    image: logo2,
+  },
+  {
+    name: "idi nuhui",
+    id: 3,
+    image: logo2,
+  },
+  {
+    name: "wsef",
+    id: 4,
+    image: logo2,
+  },
+  {
+    name: "wsefaw",
+    id: 4,
+    image: logo2,
+  },
+  {
+    name: "wsefaw",
+    id: 4,
+    image: logo2,
+  },
+  {
+    name: "wsefaw",
+    id: 4,
+    image: logo2,
+  },
+  {
+    name: "wsefaw",
+    id: 4,
+    image: logo2,
+  },
+];
 const index = () => {
-    const array = [
-        {
-            name:'moloko',
-            id:1,
-            image:logo2
-        },
-        {
-            name:'мясо',
-            id:2,
-            image:logo2
-        },
-        {
-            name:'idi nuhui',
-            id:3,
-            image:logo2
-        },
-        {
-            name:'wsef',
-            id:4,
-            image:logo2
-        }
-        ,
-        {
-            name:'wsefaw',
-            id:4,
-            image:logo2
-        }
-        ,
-        {
-            name:'wsefaw',
-            id:4,
-            image:logo2
-        }
-        ,
-        {
-            name:'wsefaw',
-            id:4,
-            image:logo2
-        }
-        ,
-        {
-            name:'wsefaw',
-            id:4,
-            image:logo2
-        }
-    ]
+  const [width, setWidth] = useState(0);
+  const handleWindowResize = () => {
+    setWidth(window.innerWidth);
+  };
 
-//    const handleClickPageProduct = (id) => {
-//         <Link href={`/category/${id}`}>
-//         </Link>
-//     }
-    return (
-        <div>
-            <Logos image={logo.src} />
-            <h1 style={{
-                fontSize:'35px',
-                marginTop:'30px',
-                textAlign: 'center',
-                
-            }}>Категории продуктов</h1>
-           <div style={{
-               display:'flex',
-               flexWrap:'wrap',
-               justifyContent:'space-between',
-               width:'900px',
-               margin:'0 auto'
-           }}>
-               {array.map((item)=>{
-                   return(
-                  <div style={{
-                    marginLeft:'20px',
-                    marginRight:'20px'
-                 }}>
-                     <div>
-                        <Link href={`/category/${item.id}`}>
-                        <img src={item.image.src} alt="ok"  style={{
-                            width:'150px',
-                            height:'300px'
-                        }}/>
-                        </Link>
-                    </div>
-                    <div>{item.name}</div>
-                    <div>{item.id}</div>
-                 </div>
-                 )
-                 })}
-               </div>
+  useEffect(() => {
+    // component is mounted and window is available
+    handleWindowResize();
+    window.addEventListener("resize", handleWindowResize);
+    // unsubscribe from the event on component unmount
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
+  return (
 
-           <Footer/>
-        </div>
-    );
+    <div>
+      <Logos image={logo.src} />
+      <h1
+        style={{
+          fontSize: '35px',
+          marginTop: '30px',
+          textAlign: 'center',
+        }}
+      >
+        Категории продуктов
+      </h1>
+      <Swiper
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        centeredSlidesBounds={true}
+        slidesPerView={width <= 475 ? 1 : 3}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: false,
+        }}
+        navigation={width <= 475 ? false : true}
+        pagination={{ clickable: true }}
+        modules={[EffectCoverflow, Pagination, Navigation]}
+        style={{
+          width: "80%",
+          marginBottom: "200px",
+          padding: "40px 0px 40px 0px",
+          boxSizing: "border-box",
+        }}
+      >
+        {array.map((item, index) => {
+          return (
+            <SwiperSlide key={`item_${index}`}>
+                  <ICard item={item} key={item.id} />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default index;
