@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { signUpUser } from '../../redux/products/registration.slice';
 import logo from '../../assets/logo2.png';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const initialValues = {
   username: '',
@@ -44,7 +45,7 @@ function Registration() {
       <div className={classes.logo_img}>
         <Image src={logo} alt={logo} width={100} height={100} />
       </div>
-      <h1>кастрация</h1>
+      <h1>Регистрация</h1>
       <div>
         <h3 className={classes.about_signup}>
           Просим ввести настоящие данные так как выдача приза возможна только
@@ -104,9 +105,28 @@ function Registration() {
             {errors.last_name && touched.last_name && (
               <p className={classes.text_danger}>{errors.last_name}</p>
             )}
-            <Button type='submit' variant='contained'>
-              Регистрация
-            </Button>
+            <div className={classes.link_auth}>
+              <Button
+                className={classes.link_sign}
+                type='submit'
+                variant='contained'
+              >
+                Регистрация
+              </Button>
+              <div>
+                <Link href='/'>
+                  <a>
+                    <span>Уже есть аккаунт ?</span>
+                    <Button
+                      className={classes.link_auth_button}
+                      variant='contained'
+                    >
+                      Войти
+                    </Button>
+                  </a>
+                </Link>
+              </div>
+            </div>
           </Form>
         )}
       </Formik>
