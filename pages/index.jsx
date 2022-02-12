@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import logo from '../assets/logo2.png';
 import logo2 from '../assets/lol.jpg';
-import Logos from '../components/logos';
+import Logos from '../components/Logos';
 import Footer from '../components/Footer';
 const index = () => {
   const array = [
