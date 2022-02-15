@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation, FreeMode } from 'swiper';
 import logo from '../assets/logo2.png';
@@ -11,7 +11,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import ICard from '../components/ICard/ICard';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 const array = [
   {
