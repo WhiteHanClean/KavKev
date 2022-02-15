@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\white\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+  C:\Program Files\nodejs\node.exe C:\Users\white\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @material-ui/icons
 
 PATH: 
   C:\Users\white\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\white\bin;C:\Python310\Scripts;C:\Python310;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs;C:\Users\white\AppData\Local\Microsoft\WindowsApps;C:\Users\white\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\white\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -41,6 +41,7 @@ npm manifest:
       "react-redux": "^7.2.6",
       "sass": "^1.49.7",
       "scss": "^0.2.4",
+      "swiper": "^7.3.0",
       "yup": "^0.32.11"
     },
     "devDependencies": {
@@ -1699,6 +1700,13 @@ Lockfile:
       "domhandler" "^4.2.0"
       "entities" "^2.0.0"
   
+  "dom7@^4.0.1":
+    "integrity" "sha512-DSSgBzQ4rJWQp1u6o+3FVwMNnT5bzQbMb+o31TjYYeRi05uAcpF8koxdfzeoe5ElzPmua7W7N28YJhF7iEKqIw=="
+    "resolved" "https://registry.npmjs.org/dom7/-/dom7-4.0.4.tgz"
+    "version" "4.0.4"
+    dependencies:
+      "ssr-window" "^4.0.0"
+  
   "domelementtype@^2.0.1", "domelementtype@^2.2.0":
     "integrity" "sha512-DtBMo82pv1dFtUmHyr48beiuq792Sxohr+8Hm9zoxklYPfa6n0Z3Byjj2IV7bmr2IyqClnqEQhfgHJJ5QF0R5A=="
     "resolved" "https://registry.npmjs.org/domelementtype/-/domelementtype-2.2.0.tgz"
@@ -2304,6 +2312,11 @@ Lockfile:
     "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
     "version" "0.6.1"
   
+  "ssr-window@^4.0.0", "ssr-window@^4.0.1":
+    "integrity" "sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ=="
+    "resolved" "https://registry.npmjs.org/ssr-window/-/ssr-window-4.0.2.tgz"
+    "version" "4.0.2"
+  
   "stable@^0.1.8":
     "integrity" "sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w=="
     "resolved" "https://registry.npmjs.org/stable/-/stable-0.1.8.tgz"
@@ -2348,6 +2361,14 @@ Lockfile:
       "csso" "^4.2.0"
       "picocolors" "^1.0.0"
       "stable" "^0.1.8"
+  
+  "swiper@^7.3.0":
+    "integrity" "sha512-pABfs5licxu2fmA53NrwVyeLMBKAMWBRfVbwKTF0PG40bCk3HDNWWqp1l/D3SQoO6/jx2rbKgVPymnAoXrcpKw=="
+    "resolved" "https://registry.npmjs.org/swiper/-/swiper-7.3.0.tgz"
+    "version" "7.3.0"
+    dependencies:
+      "dom7" "^4.0.1"
+      "ssr-window" "^4.0.1"
   
   "tiny-warning@^1.0.2":
     "integrity" "sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA=="
