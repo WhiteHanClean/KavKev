@@ -7,13 +7,9 @@ import classes from './Registration.module.scss';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { signUpUser } from '../../redux/products/registration.slice';
-<<<<<<< HEAD
-
-=======
 import logo from '../../assets/logo2.png';
 import Image from 'next/image';
 import Link from 'next/link';
->>>>>>> cc9520cc6ecaac6674faf5623395323d6c8e278c
 
 const initialValues = {
   username: '',
