@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import lll from "../../assets/lll.png";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import Header from "../../components/Header";
 
 export default function Category() {
   const router = useRouter();
@@ -70,6 +71,8 @@ export default function Category() {
   //     )
   // }
   return (
+    <>
+    <Header />
     <div className={classes.container}>
       <Logos image={logo.src} /> <h1> Категории: </h1>{" "}
       <div className={classes.contet}>
@@ -156,6 +159,7 @@ export default function Category() {
       </div>{" "}
       </div>
     </div>
+    </>
   );
 }
 
