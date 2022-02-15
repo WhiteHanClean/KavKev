@@ -70,6 +70,10 @@ export default function Category() {
   //     </Link>
   //     )
   // }
+
+  const addToLocal = (product)=>{
+    localStorage.setItem("beforeCart", product)
+  }
   return (
     <>
     <Header />
@@ -99,7 +103,7 @@ export default function Category() {
                       </div>{" "}
                       <div class={classes.buy}>
                         {" "}
-                        <ShoppingCartIcon />
+                        <ShoppingCartIcon onClick={()=>addToLocal(item.id)}/>
                       </div>
                     </div>{" "}
                     <div class={classes.right}>

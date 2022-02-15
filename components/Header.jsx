@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge } from "@mui/material";
-import Link from "next/link";
-// import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
+import CartModal from "./Cart/CartModal";
 const Header = () => {
   return (
     <div
@@ -13,11 +13,7 @@ const Header = () => {
         padding: "20px"
       }}
     >
-      <Link href="/cart" style={{ textDecoration: "none" }}>
-        <Badge badgeContent={4} color="success">
-          {/* <ShoppingCartIcon style={{fontSize: '50px', color: 'red', cursor: "pointer"}}/> */}
-        </Badge>
-      </Link>
+        <CartModal />
     </div>
   );
 };

@@ -1,9 +1,31 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background: #f4f4f4;
+body {
+  background: #f4f4f4;
+}
+
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+  width: 400px !important;
+  padding: 0px !important;  
+}
+
+
+.css-6hp17o-MuiList-root-MuiMenu-list{
+    padding: 0px;
+}
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    height: 40px !important;
+    padding: 0px !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+}
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+    height: 100% !important;
+    padding: 0px;
 }
