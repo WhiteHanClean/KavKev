@@ -65,13 +65,14 @@ const index = () => {
     setWidth(window.innerWidth);
   };
   const router = useRouter();
-
   useEffect(() => {
     if (localStorage.getItem('access')) {
       return;
     } else {
       router.push('/registration');
     }
+  }, []);
+  useEffect(() => {
     // component is mounted and window is available
     handleWindowResize();
     window.addEventListener('resize', handleWindowResize);
