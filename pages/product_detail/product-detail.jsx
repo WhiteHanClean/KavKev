@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import classes from './detail.module.scss';
 import { useState } from 'react';
 import logo2 from '../../assets/yaLox.png'

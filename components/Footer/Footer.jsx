@@ -45,11 +45,11 @@ const Footer = () => {
       <div className={cl.main}>
         {footer_content.map((item, index) => {
           return (
-            <div className={cl.card}>
+            <div key={`footer__content_${index}`} className={cl.card}>
               <h2 className={cl.card__title}>{item.title}</h2>
               {item.links.map((link, linkIndex) => {
                 return (
-                  <Link href={link.link}>
+                  <Link key={`footer__content_${index}_link_${linkIndex}`} href={link.link}>
                     <p className={cl.card__link}>{link.text}</p>
                   </Link>
                 );
