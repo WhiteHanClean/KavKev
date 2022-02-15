@@ -73,12 +73,13 @@ const index = () => {
     } else {
       router.push('/registration');
     }
-    // component is mounted and window is available
+  }, []);
+  useEffect(()=>{
     handleWindowResize();
     window.addEventListener('resize', handleWindowResize);
     // unsubscribe from the event on component unmount
     return () => window.removeEventListener('resize', handleWindowResize);
-  }, []);
+  },[])
 
   return (
     <div>
@@ -97,7 +98,7 @@ const index = () => {
         grabCursor={true}
         centeredSlides={true}
         centeredSlidesBounds={true}
-        slidesPerView={width <= 475 ? 1 : 3}
+        slidesPerView={width <= 550 ? 1 : 3}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -105,11 +106,11 @@ const index = () => {
           modifier: 1,
           slideShadows: false,
         }}
-        navigation={width <= 475 ? false : true}
+        navigation={width <= 550 ? false : true}
         pagination={{ clickable: true }}
         modules={[EffectCoverflow, Pagination, Navigation]}
         style={{
-          width: '80%',
+          width: '90%',
           marginBottom: '200px',
           padding: '40px 0px 40px 0px',
           boxSizing: 'border-box',
@@ -117,7 +118,7 @@ const index = () => {
       >
         {array.map((item, index) => {
           return (
-            <SwiperSlide key={`item_${index}`}>
+            <SwiperSlide key={`item_${index}_swipe_slide`}>
               <ICard item={item} key={item.id} />
             </SwiperSlide>
           );

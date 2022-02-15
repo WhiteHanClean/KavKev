@@ -82,44 +82,44 @@ export default function Category() {
              justifyContent:'space-between',
              flexWrap:'wrap'
          }}>
-         {productCategory.map((item) => {
+         {productCategory.map((item, index) => {
             return (
-              <div class={classes.wrapper}>
-                <div class={classes.container}>
-                  <div class={classes.top} style={{
+              <div key={`product_category_${index}`} className={classes.wrapper}>
+                <div className={classes.container}>
+                  <div className={classes.top} style={{
                          background:`url(${item.image.src}) no-repeat center center` 
                   }}> </div>{" "}
-                  <div class={classes.bottom}>
-                    <div class={classes.left}>
-                      <div class={classes.details}>
+                  <div className={classes.bottom}>
+                    <div className={classes.left}>
+                      <div className={classes.details}>
                         <h1> {item.name} </h1> <p> £250 </p>{" "}
                       </div>{" "}
-                      <div class={classes.buy}>
+                      <div className={classes.buy}>
                         {" "}
                         <ShoppingCartIcon />
                       </div>
                     </div>{" "}
-                    <div class={classes.right}>
-                      <div class={classes.done}>
+                    <div className={classes.right}>
+                      <div className={classes.done}>
                         {" "}
-                        <i class="material-icons"> done </i>
+                        <i className="material-icons"> done </i>
                       </div>
-                      <div class={classes.details}>
+                      <div className={classes.details}>
                         <h1> {item.name} </h1> <p> Added to your cart </p>{" "}
                       </div>{" "}
-                      <div class={classes.remove}>
+                      <div className={classes.remove}>
                         {" "}
-                        <i class="material-icons"> clear </i>
+                        <i className="material-icons"> clear </i>
                       </div>
                     </div>{" "}
                   </div>{" "}
                 </div>{" "}
-                <div class={classes.inside}>
-                  <div class={classes.icon}>
+                <div className={classes.inside}>
+                  <div className={classes.icon}>
                     {" "}
                     <img style={{width:'30px'}} src="https://img.icons8.com/external-photo3ideastudio-lineal-photo3ideastudio/64/000000/external-info-digital-business-photo3ideastudio-lineal-photo3ideastudio.png"/>
                   </div>
-                  <div class={classes.contents}>
+                  <div className={classes.contents}>
                     <table>
                       <tr>
                         <th> Width </th> <th> Height </th>{" "}
