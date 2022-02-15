@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination, Navigation, FreeMode } from 'swiper';
+import { EffectCoverflow, Pagination, Navigation } from 'swiper';
 import logo from '../assets/logo2.png';
 import logo2 from '../assets/lol.jpg';
 import Logos from '../components/logos';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer/Footer.jsx';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
