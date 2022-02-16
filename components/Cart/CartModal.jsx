@@ -14,6 +14,7 @@ const CartModal = () => {
     setAnchorEl(event.currentTarget);
   };
 
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -36,6 +37,8 @@ const CartModal = () => {
     getCart();
   }, []);
 
+
+
   return (
     <div>
       <Badge badgeContent={carts.length} color="success">
@@ -56,19 +59,19 @@ const CartModal = () => {
       >
         <div className={cl.menushka}>
           <div className={cl.head}>
-            <h5>Количество товаров: 3</h5>
+            <h5>Количество товаров: {carts.length}</h5>
             <p>в вашей корзине</p>
           </div>
           {!!carts?.length &&
-            carts.map((item) => (
+             carts.map((item) => (
               <div className={cl.main_container} key={item.id}>
-                <CartModalList item={item} getCart={getCart} />
+                <CartModalList item={item} getCart={getCart}/>
               </div>
             ))}
           <div className={cl.footer}>
-            <Link href="/cart">
-              <h6>В корзину </h6>
-            </Link>
+            {/* <Link href="/cart"> */}
+              <h6 >В корзину </h6>
+            {/* </Link> */}
           </div>
         </div>
       </Menu>

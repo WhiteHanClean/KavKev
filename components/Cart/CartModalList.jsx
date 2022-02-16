@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { TextField } from "@mui/material";
 import cl from "./CartModal.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import fo from "../../assets/halal.png";
 
-const CartModalList = ({ item , getCart}) => {
+const CartModalList = ({ item, getCart }) => {
   const [count, setCount] = useState(item.count);
 
   const handleOnChange = (e) => {
     e.target.value === "" ? 1 : setCount(e.target.value);
   };
 
-  function deleteFromCart(id){
+  function deleteFromCart(id) {
     let cart = JSON.parse(localStorage.getItem("cart"));
     if (!cart) {
       cart = {
@@ -20,10 +20,17 @@ const CartModalList = ({ item , getCart}) => {
         totalPrice: 0,
       };
     }
-    cart.products = cart.products.filter((item)=> item.item.id !==id )
-    localStorage.setItem('cart', JSON.stringify(cart))
-    getCart()
+    cart.products = cart.products.filter((item) => item.item.id !== id);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    getCart();
   }
+
+  const sum =() => {
+    const sum1 = item.price * count ;
+    console.log(sum1)
+    return sum1
+  }
+
   return (
     <div>
       <div className={cl.menu}>
@@ -33,7 +40,7 @@ const CartModalList = ({ item , getCart}) => {
           <p>
             {item.price}{" "}
             <span>
-              сом x {count} шт = {item.price * count} сом
+              сом x {count} шт = {sum(item)} сом
             </span>
           </p>
           <div className={cl.foot}>
@@ -44,7 +51,10 @@ const CartModalList = ({ item , getCart}) => {
               type="number"
               onChange={(e) => handleOnChange(e)}
             />
-            <CloseIcon className={cl.del_icon}  onClick={(e)=>deleteFromCart(item.id)}/>
+            <CloseIcon
+              className={cl.del_icon}
+              onClick={(e) => deleteFromCart(item.id)}
+            />
           </div>
         </div>
       </div>

@@ -9,11 +9,13 @@ import {
 } from '../../redux/products/category.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/Header';
-import { cardActionAreaClasses } from '@mui/material';
 
 
 export default function Category() {
 
+  useEffect(() => {
+    getCart();
+  }, []);
 
   const dispatch = useDispatch();
 
@@ -66,6 +68,7 @@ export default function Category() {
       cart.products.push(newProduct);
     }
      window.localStorage.setItem('cart', JSON.stringify(cart))
+     getCart()
      
   }
 
@@ -120,7 +123,7 @@ export default function Category() {
                               </div>{' '}
                               <div class={classes.buy}>
                                 {' '}
-                                <ShoppingCartIcon style={{ color: checkItem(item.id) }} onClick={() => {
+                                <ShoppingCartIcon style={{ color: checkItem(item.id), cursor: 'pointer' }} onClick={() => {
                                   addToLocal(item);
                                 }} />
                               </div>
