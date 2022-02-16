@@ -12,9 +12,6 @@ const initialState = {
 };
 
 export const signUpAdapter = createEntityAdapter();
-export const signUpSelectors = signUpAdapter.getSelectors(
-  (state) => state.registration
-);
 
 export const signUpUser = createAsyncThunk(
   'registration/signUpUser',
@@ -27,7 +24,7 @@ export const signUpUser = createAsyncThunk(
           first_name,
           last_name,
         })
-        .then((data) => localStorage.setItem('access', data.data.token));
+        .then((data) => window.localStorage.setItem('access', data.data.token));
     } catch (e) {
       return e.error.message;
     }
@@ -46,7 +43,6 @@ const signUpSlice = createSlice({
     builder.addCase(signUpUser.fulfilled, (state, action) => {
       state.loading = false;
       state.username = action.payload;
-      console.log(action);
       state.error = null;
     });
     builder.addCase(signUpUser.rejected, (state, action) => {

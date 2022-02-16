@@ -1,18 +1,17 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination, Navigation, FreeMode } from "swiper";
-import logo from "../assets/logo2.png";
-import logo2 from "../assets/lol.jpg";
-import Logos from "../components/logos";
-import Footer from "../components/Footer";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import ICard from "../components/ICard/ICard";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import Header from "../components/Header";
+import React, { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, Pagination, Navigation, FreeMode } from 'swiper';
+import logo from '../assets/logo2.png';
+import logo2 from '../assets/lol.jpg';
+import Logos from '../components/logos';
+import Footer from '../components/Footer';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import ICard from '../components/ICard/ICard';
+import { useRouter } from 'next/router';
+import Header from '../components/Header';
 
 const array = [
   {
@@ -67,13 +66,14 @@ const index = () => {
     setWidth(window.innerWidth);
   };
   const router = useRouter();
-
   useEffect(() => {
-    if (localStorage.getItem("access")) {
+    if (window.localStorage.getItem("access")) {
       return;
     } else {
       router.push("/registration");
     }
+  }, []);
+  useEffect(() => {
     // component is mounted and window is available
     handleWindowResize();
     window.addEventListener("resize", handleWindowResize);
