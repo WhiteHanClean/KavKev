@@ -14,7 +14,10 @@
         align-items: center;
         grid-gap: 10px;
         &__img{
-            width: 75px;
+            img{
+                width: 75px !important;
+                height: 75px !important;
+            }
         }
         &__text{
             font-size: 25px;

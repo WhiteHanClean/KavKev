@@ -8,7 +8,7 @@ import {
   categorySelectors,
 } from '../../redux/products/category.slice';
 import { useDispatch, useSelector } from 'react-redux';
-import Header from '../../components/Header';
+
 
 
 export default function Category() {

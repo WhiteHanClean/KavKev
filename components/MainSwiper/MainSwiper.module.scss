@@ -3,10 +3,9 @@
     display: flex;
     justify-content: center;
     background: url(https://gipermarket.kg/wp-content/themes/gtm/images/bg-slider.gif) no-repeat center top;
-    height: 450px;
-    padding-top: 80px;
+
     margin-bottom: 100px;
-    padding: 80px 10% 0 10%;
+    padding: 10% 10% 0 10%;
     .background {
         position: absolute;
     }
@@ -14,10 +13,13 @@
     .MainSwiper {
         border: 1px solid white;
         border-radius: 50px;
-        width: 800px;
-        height: 380px !important;
+        width: 90%;
+        height: 450px !important;
         text-align: center;
         background-color: rgb(236, 236, 236);
+        @media (max-width: 1000px){
+            height: 350px !important;
+        }
         @media (max-width: 700px){
             height: 300px !important;
         }

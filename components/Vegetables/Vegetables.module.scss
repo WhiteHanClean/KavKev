@@ -1,0 +1,20 @@
+.container{
+    background: url("https://gipermarket.kg/wp-content/themes/gtm/images/bg-ovoshhi-frukty.jpg") no-repeat center top;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 480px;
+    *{
+        color: white;
+    }
+    h2{
+        margin-bottom: 40px;
+        font-size: 32px;
+    }
+    p{
+        width: 70%;
+        font-size: 18px;
+    }
+}

@@ -13,6 +13,7 @@ import { useRouter } from 'next/router';
 import MainSwiper from '../components/MainSwiper/MainSwiper';
 const imagesmain = [];
 import Head from 'next/head';
+import Vegetables from '../components/Vegetables/Vegetables';
 
 const array = [
   {
@@ -83,7 +84,7 @@ const index = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{marginBottom: "100px"}}>
       <MainSwiper/>
       <h1
         style={{
@@ -114,9 +115,9 @@ const index = () => {
         modules={[EffectCoverflow, Pagination, Navigation]}
         style={{
           width: '90%',
-          marginBottom: '200px',
           padding: '40px 0px 40px 0px',
           boxSizing: 'border-box',
+          marginBottom: "100px", 
         }}
       >
         {array.map((item, index) => {
@@ -128,6 +129,7 @@ const index = () => {
         })}
       </Swiper>
       </div>
+      <Vegetables/>
     </div>
   );
 };
