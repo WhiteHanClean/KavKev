@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination, Navigation, FreeMode } from 'swiper';
+import { EffectCoverflow, Pagination, Navigation } from 'swiper';
 import logo from '../assets/logo2.png';
 import logo2 from '../assets/lol.jpg';
 import Logos from '../components/logos';
@@ -10,7 +10,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import ICard from '../components/ICard/ICard';
 import { useRouter } from 'next/router';
-
+import MainSwiper from '../components/MainSwiper/MainSwiper';
+const imagesmain = [];
 const array = [
   {
     name: "moloko",
@@ -81,7 +82,7 @@ const index = () => {
 
   return (
     <div>
-    
+      <MainSwiper/>
       <Logos image={logo.src} />
       <h1
         style={{
