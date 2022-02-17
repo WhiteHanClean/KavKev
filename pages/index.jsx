@@ -67,7 +67,7 @@ const index = () => {
   };
   const router = useRouter();
   useEffect(() => {
-    if (window.localStorage.getItem("access")) {
+    if (window.localStorage.getItem("userToken")) {
       return;
     } else {
       router.push("/registration");

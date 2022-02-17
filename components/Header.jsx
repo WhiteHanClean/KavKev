@@ -1,8 +1,9 @@
 import React from "react";
-import { Badge } from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import CartModal from "./Cart/CartModal";
-const Header = ({carts}) => {
+const Header = () => {
+
+
+
   return (
     <div
       style={{
@@ -13,7 +14,7 @@ const Header = ({carts}) => {
         padding: "20px"
       }}
     >
-        <CartModal carts={carts}/>
+        <CartModal />
     </div>
   );
 };

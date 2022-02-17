@@ -8,6 +8,7 @@ import axios from "axios";
 import Link from "next/link";
 
 const CartModal = () => {
+  
   const [carts, setCarts] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
