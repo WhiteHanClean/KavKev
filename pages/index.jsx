@@ -124,8 +124,6 @@ const index = () => {
           );
         })}
       </Swiper>
-
-
     </div>
   );
 };
