@@ -4,13 +4,13 @@ import { EffectCoverflow, Pagination, Navigation, FreeMode } from 'swiper';
 import logo from '../assets/logo2.png';
 import logo2 from '../assets/lol.jpg';
 import Logos from '../components/logos';
-import Footer from '../components/Footer';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import ICard from '../components/ICard/ICard';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const array = [
   {
@@ -82,6 +82,12 @@ const index = () => {
 
   return (
     <div>
+      <Head>
+        <title>Насвай</title>
+        <meta name='keywords' content='soska' />
+        <meta name='description' content='' />
+        <meta charSet='uft-8' />
+      </Head>
       <Logos image={logo.src} />
       <h1
         style={{
@@ -97,7 +103,7 @@ const index = () => {
         grabCursor={true}
         centeredSlides={true}
         centeredSlidesBounds={true}
-        slidesPerView={width <= 475 ? 1 : 3}
+        slidesPerView={width <= 550 ? 1 : 3}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -105,11 +111,11 @@ const index = () => {
           modifier: 1,
           slideShadows: false,
         }}
-        navigation={width <= 475 ? false : true}
+        navigation={width <= 550 ? false : true}
         pagination={{ clickable: true }}
         modules={[EffectCoverflow, Pagination, Navigation]}
         style={{
-          width: '80%',
+          width: '90%',
           marginBottom: '200px',
           padding: '40px 0px 40px 0px',
           boxSizing: 'border-box',
@@ -117,14 +123,12 @@ const index = () => {
       >
         {array.map((item, index) => {
           return (
-            <SwiperSlide key={`item_${index}`}>
+            <SwiperSlide key={`item_${index}_swipe_slide`}>
               <ICard item={item} key={item.id} />
             </SwiperSlide>
           );
         })}
       </Swiper>
-
-      <Footer />
     </div>
   );
 };
