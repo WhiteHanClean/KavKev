@@ -18,6 +18,7 @@ export default function Category() {
   useEffect(() => {
     dispatch(getAllCategoryEntities(1));
   }, []);
+
   const category = useSelector((state) => categorySelectors.selectAll(state));
 
   // const router = useRouter();
@@ -94,6 +95,9 @@ export default function Category() {
                         </div>
                         <div class={classes.contents}>
                           <table>
+                            <tr>
+                              <th>{item.composition}</th>
+                            </tr>
                             <tr>
                               <th> Width </th> <th> Height </th>{' '}
                             </tr>{' '}
