@@ -105,10 +105,10 @@ export default function Category() {
                 {!!category &&
                   category.map((item) => {
                     return (
-                      <div key={item.id} class={classes.wrapper}>
-                        <div class={classes.container}>
+                      <div key={item.id} className={classes.wrapper}>
+                        <div className={classes.container}>
                           <div
-                            class={classes.top}
+                            className={classes.top}
                             style={{
                               background: `url(${!!item.image && item.image
                                 }) no-repeat center center`,
@@ -116,43 +116,43 @@ export default function Category() {
                           >
                             {' '}
                           </div>{' '}
-                          <div class={classes.bottom}>
-                            <div class={classes.left}>
-                              <div class={classes.details}>
+                          <div className={classes.bottom}>
+                            <div className={classes.left}>
+                              <div className={classes.details}>
                                 <h1> {item.name_product} </h1> <p> £250 </p>{' '}
                               </div>{' '}
-                              <div class={classes.buy}>
+                              <div className={classes.buy}>
                                 {' '}
                                 <ShoppingCartIcon style={{ color: checkItem(item.id), cursor: 'pointer' }} onClick={() => {
                                   addToLocal(item);
                                 }} />
                               </div>
                             </div>{' '}
-                            <div class={classes.right}>
-                              <div class={classes.done}>
+                            <div className={classes.right}>
+                              <div className={classes.done}>
                                 {' '}
-                                <i class='material-icons'> done </i>
+                                <i className='material-icons'> done </i>
                               </div>
-                              <div class={classes.details}>
+                              <div className={classes.details}>
                                 <h1> {item.name_product} </h1>{' '}
                                 <p> Added to your cart </p>{' '}
                               </div>{' '}
-                              <div class={classes.remove}>
+                              <div className={classes.remove}>
                                 {' '}
-                                <i class='material-icons'> clear </i>
+                                <i className='material-icons'> clear </i>
                               </div>
                             </div>{' '}
                           </div>{' '}
                         </div>{' '}
-                        <div class={classes.inside}>
-                          <div class={classes.icon}>
+                        <div className={classes.inside}>
+                          <div className={classes.icon}>
                             {' '}
                             <img
                               style={{ width: '30px' }}
                               src='https://img.icons8.com/external-photo3ideastudio-lineal-photo3ideastudio/64/000000/external-info-digital-business-photo3ideastudio-lineal-photo3ideastudio.png'
                             />
                           </div>
-                          <div class={classes.contents}>
+                          <div className={classes.contents}>
                             <table>
                               <tr>
                                 <th> Width </th> <th> Height </th>{' '}

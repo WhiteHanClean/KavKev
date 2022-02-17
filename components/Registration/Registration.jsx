@@ -35,7 +35,7 @@ function Registration() {
   const dispatch = useDispatch();
   const handleSubmit = async (values) => {
     await dispatch(signUpUser(values));
-    if (window.localStorage.getItem('access')) {
+    if (window.localStorage.getItem('userToken')) {
       router.push('/');
     }
   };
