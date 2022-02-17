@@ -1,11 +1,36 @@
-.container{
+.container {
     position: relative;
-    .background{
-        
+    display: flex;
+    justify-content: center;
+
+    .background {
         position: absolute;
     }
-    .mySwper{
-        width: 100%;
-        min-height: 400px;
+
+    .MainSwiper {
+        border: 1px solid white;
+        border-radius: 50px;
+        width: 800px;
+        min-height: 350px !important;
+        text-align: center;
+        background-color: black;
+        .slide_img{
+            width: 100% !important;
+
+        }
+
+        .swipeSlider {
+            background-position: center;
+            background-size: cover;
+            .ok_img{
+                width: 800px !important;
+            }
+            img{
+                display: block;
+                width: 800px !important;
+                border-radius: 10px;
+                object-fit: cover   ;
+           }
+        }
     }
 }
