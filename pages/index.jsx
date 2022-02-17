@@ -84,7 +84,7 @@ const index = () => {
   }, []);
 
   return (
-    <div style={{marginBottom: "100px"}}>
+    <div style={{marginBottom: "100px", paddingTop: "100px"}}>
       <MainSwiper/>
       <h1
         style={{

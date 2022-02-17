@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 .container{
   min-height: 70vh;
+  background: white;
+  padding: 20px 0 0 0;
 }
 .contet {
   max-width: 1200px;
@@ -25,11 +27,10 @@
   .container {
     width: 100%;
     height: 100%;
-    background-color: #fff;
     .top {
-      height: 80%;
+      height: 52%;
       width: 100%;
-
+      background-size: contain !important;
       -webkit-background-size: 100%;
       -moz-background-size: 100%;
       -o-background-size: 100%;
