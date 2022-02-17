@@ -27,7 +27,7 @@ export const signUpUser = createAsyncThunk(
           first_name,
           last_name,
         })
-        .then((data) => localStorage.setItem('access', data.data.token));
+        .then((data) => localStorage.setItem('userToken', data.data.token));
     } catch (e) {
       return e.error.message;
     }

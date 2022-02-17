@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Requirements.module.scss'
-import MainContainer from "../MainContainer";
+import { Container } from '@mui/material'
 import Typography from "@material-ui/core/Typography";
 import Link from '@mui/material/Link';
 import insta from "../../../assets/ig.png";
@@ -10,7 +10,7 @@ import insta from "../../../assets/ig.png";
 
 const Requirements = () => {
     return(
-        <MainContainer style={{ maxWidth: "720px" }} className={styles.Cuntainer} >
+        <Container style={{ maxWidth: "720px" }} className={styles.Cuntainer} >
             <Typography
                 component="h5"
                 variant="h5"
@@ -158,7 +158,7 @@ const Requirements = () => {
             >
                 *Сотрудники компании Кав Кев не имеют право принимать участие в данном конкурсе. *В розыгрыше могут участвовать лица достигшие 18 лет
             </Typography>
-        </MainContainer>
+        </Container>
     )
 }
 

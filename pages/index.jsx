@@ -3,13 +3,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Navigation, FreeMode } from "swiper";
 import logo from "../assets/logo2.png";
 import logo2 from "../assets/lol.jpg";
-import Logos from "../components/logos";
+import Logos from "../components/Logos";
 import Footer from "../components/Footer";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import ICard from "../components/ICard/ICard";
+import Link from 'next/link';
+
 
 const array = [
   {
@@ -55,7 +57,6 @@ const array = [
 ];
 const index = () => {
   const [width, setWidth] = useState(0);
-
   const handleWindowResize = () => {
     setWidth(window.innerWidth);
   };
@@ -68,6 +69,7 @@ const index = () => {
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
   return (
+
     <div>
       <Logos image={logo.src} />
       <h1
@@ -105,7 +107,7 @@ const index = () => {
         {array.map((item, index) => {
           return (
             <SwiperSlide key={`item_${index}`}>
-              <ICard item={item} />
+                  <ICard item={item} key={item.id} />
             </SwiperSlide>
           );
         })}
