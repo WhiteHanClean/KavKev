@@ -88,7 +88,6 @@ export default function Category() {
 
   return (
     <>
-      <Header carts={carts} />
       <div className={classes.container}>
         <Logos image={logo.src} /> <h1> Категории: </h1>{' '}
         <div className={classes.contet}>

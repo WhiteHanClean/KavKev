@@ -28,16 +28,11 @@ function MainSwiper({ images = ["https://picsum.photos/200/300", "https://picsum
         className={styles.MainSwiper}
       >
         <SwiperSlide className={styles.slide_img}>
-          <img className={styles.ok_img} src='https://gipermarket.kg/wp-content/uploads/2021/12/ar-dajym-rus-1010x368.jpg' alt="" style={{ width:'800px' , height:'480px'}}/>
+          <img className={styles.ok_img} src='https://retrofm.kg/wp-content/uploads/2021/05/57055b13-e910-430c-bc78-412f5b5acba9.jpg' alt="" style={{ height:'100%', width: "100%",objectFit: "cover" }}/>
         </SwiperSlide >
         <SwiperSlide className={styles.slide_img}>
-          <img className={styles.ok_img} src={img.src} alt="" style={{ width:'800px' }}/>
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide_img}>
-          <img className={styles.ok_img} src={img.src} alt="" style={{ width:'800px' }}/>
-        </SwiperSlide>
-
-        
+          <img className={styles.ok_img} src='https://halalguide.me/media/imgs/places/2017/11/14/ergerg.jpg' alt="" style={{ height:'100%', width: "100%",objectFit: "cover" }}/>
+        </SwiperSlide>        
       </Swiper>
     </div>
   );

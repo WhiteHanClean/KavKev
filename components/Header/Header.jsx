@@ -1,7 +1,8 @@
 import React from "react";
 import cl from "./Header.module.scss";
 import logo from "../../assets/logo2.png";
-import busket from "../../assets/logo2.png";
+import CartModal from "../Cart/CartModal";
+
 import Image from "next/image";
 function Header() {
   return (
@@ -13,7 +14,7 @@ function Header() {
         <p className={cl.logo__text}>KavKev</p>
       </div>
       <div className={cl.busket}>
-        <Image src={busket} />
+          <CartModal />
       </div>
     </div>
   );

@@ -85,7 +85,6 @@ const index = () => {
   return (
     <div>
       <MainSwiper/>
-      <Logos image={logo.src} />
       <h1
         style={{
           fontSize: '35px',
@@ -95,7 +94,9 @@ const index = () => {
       >
         Категории продуктов
       </h1>
+      <div style={{background: "url(https://gipermarket.kg/wp-content/themes/gtm/images/bg-news_and_carousel.gif) no-repeat center top"}}>
       <Swiper
+        
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
@@ -126,6 +127,7 @@ const index = () => {
           );
         })}
       </Swiper>
+      </div>
     </div>
   );
 };
