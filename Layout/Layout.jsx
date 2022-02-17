@@ -6,10 +6,6 @@ import cl from "./Layout.module.scss";
 function Layout({ children }) {
   return (
     <div className={cl.container}>
-
-      <div className={cl.lol}>
-
-      </div>
       <Header/>
       <div className={cl.child__container}>{children}</div>
       <Footer/>
