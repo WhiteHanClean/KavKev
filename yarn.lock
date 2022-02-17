@@ -1181,7 +1181,6 @@
     clsx "^1.1.1"
     prop-types "^15.7.2"
     react-is "^17.0.2"
-<<<<<<< HEAD
 
 "@mui/icons-material@^5.4.1":
   version "5.4.1"
@@ -1189,8 +1188,6 @@
   integrity sha512-koiq9q2GfjXRUWcC5fEi1b+EA4vfJHgIaAdBHlkOrBx2cnmmazQcyib501eodPfaZGx9BikrhivODaNQYQq8hA==
   dependencies:
     "@babel/runtime" "^7.17.0"
-=======
->>>>>>> 39dd8561babf14f5bb34cd083c04afa7c5d5fa43
 
 "@mui/material@^5.4.1":
   version "5.4.1"

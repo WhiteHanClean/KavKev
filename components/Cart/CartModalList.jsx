@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import cl from "./CartModal.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import fo from "../../assets/halal.png";
 
-const CartModalList = ({ item, getCart }) => {
-  const [count, setCount] = useState(item.count);
-
-  const handleOnChange = (e) => {
-    e.target.value === "" ? 1 : setCount(e.target.value);
-  };
-
+const CartModalList = ({ item, getCart, changeProductCount }) => {
   function deleteFromCart(id) {
     let cart = JSON.parse(localStorage.getItem("cart"));
     if (!cart) {
@@ -25,32 +19,42 @@ const CartModalList = ({ item, getCart }) => {
     getCart();
   }
 
-  const sum =() => {
-    const sum1 = item.price * count ;
-    console.log(sum1)
-    return sum1
-  }
+  // const sum = () => {
+  //   const sum1 = item.price * count;
+  //   // console.log(sum1);
+  //   return sum1;
+  // };
 
   return (
     <div>
       <div className={cl.menu}>
-        <Image src={fo} alt="smart" />
+        <Image src={fo} alt="smart" width={60} height={60} />
         <div className={cl.menu_inner}>
-          <p>{item.name_product}</p>
+          <p className={cl.name}>{item.name_product}</p>
           <p>
-            {item.price}{" "}
-            <span>
-              сом x {count} шт = {sum(item)} сом
-            </span>
+            {item.amount} шт x {item.price} сом = {item.amount * item.price} сом
           </p>
           <div className={cl.foot}>
+            <Button
+              variant="outlined"
+              onClick={() => changeProductCount(item.amount - 1, item.id)}
+            >
+              -
+            </Button>
             <TextField
               id="outlined-basic"
               label="Количество"
               variant="outlined"
-              type="number"
-              onChange={(e) => handleOnChange(e)}
+              value={item.amount}
+              className={cl.input}
             />
+            <Button
+              variant="outlined"
+              onClick={() => changeProductCount(item.amount + 1, item.id)}
+            >
+              +
+            </Button>
+
             <CloseIcon
               className={cl.del_icon}
               onClick={(e) => deleteFromCart(item.id)}

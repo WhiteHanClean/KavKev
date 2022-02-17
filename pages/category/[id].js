@@ -76,7 +76,7 @@ export default function Category() {
   function checkItem (prod){
     if(typeof localStorage != "undefined"){
       let cart = JSON.parse(localStorage.getItem("cart"));
-      for(let i = 0; i < cart.products.length; i++){
+      for(let i = 0; i < cart?.products?.length; i++){
         const item = cart.products[i];
         if(item.item.id === prod){
           return "red";
