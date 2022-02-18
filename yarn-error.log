@@ -11,7 +11,7 @@ Node version:
   16.13.0
 
 Platform: 
-  win32 x64
+  linux x64
 
 Trace: 
   Error: EPERM: operation not permitted, unlink 'C:\Users\Acer\Desktop\kavKev\KavKev\node_modules\@next\swc-win32-x64-msvc\next-swc.win32-x64-msvc.node'
@@ -40,6 +40,7 @@ npm manifest:
       "next": "^12.0.10",
       "react": "^17.0.2",
       "react-dom": "^17.0.2",
+      "react-hook-form": "^7.27.0",
       "react-redux": "^7.2.6",
       "sass": "^1.49.7",
       "scss": "^0.2.4",
@@ -1310,9 +1311,14 @@ Lockfile:
     "resolved" "https://registry.npmjs.org/@next/env/-/env-12.0.10.tgz"
     "version" "12.0.10"
   
-  "@next/swc-win32-x64-msvc@12.0.10":
-    "integrity" "sha512-oUIWRKd24jFLRWUYO1CZmML5+32BcpVfqhimGaaZIXcOkfQW+iqiAzdqsv688zaGtyKGeB9ZtiK3NDf+Q0v+Vw=="
-    "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.0.10.tgz"
+  "@next/swc-linux-x64-gnu@12.0.10":
+    "integrity" "sha512-c79PcfWtyThiYRa1+3KVfDq0zXaI8o1d6dQWNVqDrtLz5HKM/rbjLdvoNuxDwUeZhxI/d9CtyH6GbuKPw5l/5A=="
+    "resolved" "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.0.10.tgz"
+    "version" "12.0.10"
+  
+  "@next/swc-linux-x64-musl@12.0.10":
+    "integrity" "sha512-g/scgn+21/MLfizOCZOZt+MxNj2/8Tdlwjvy+QZcSUPZRUI2Y5o3HwBvI1f/bSci+NGRU+bUAO0NFtRJ9MzH5w=="
+    "resolved" "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.0.10.tgz"
     "version" "12.0.10"
   
   "@popperjs/core@^2.4.4":
@@ -2298,6 +2304,11 @@ Lockfile:
     "resolved" "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-2.0.4.tgz"
     "version" "2.0.4"
   
+  "react-hook-form@^7.27.0":
+    "integrity" "sha512-NEh3Qbz1Rg3w95SRZv0kHorHN3frtMKasplznMBr8RkFrE4pVxjd/zo3clnFXpD0FppUVHBMfsTMtTsa6wyQrA=="
+    "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.27.0.tgz"
+    "version" "7.27.0"
+  
   "react-is@^16.13.1":
     "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
     "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -2335,7 +2346,7 @@ Lockfile:
       "loose-envify" "^1.4.0"
       "prop-types" "^15.6.2"
   
-  "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^16.9.0 || ^17.0.0 || 18.0.0-beta", "react@^17.0.0", "react@^17.0.2", "react@^17.0.2 || ^18.0.0-0", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@>=16.6.0", "react@>=16.8.0", "react@17.0.2":
+  "react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^16.9.0 || ^17.0.0 || 18.0.0-beta", "react@^17.0.0", "react@^17.0.2", "react@^17.0.2 || ^18.0.0-0", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@>=16.6.0", "react@>=16.8.0", "react@17.0.2":
     "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
     "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
     "version" "17.0.2"

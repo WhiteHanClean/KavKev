@@ -20,6 +20,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/index.js"
     ],
+    "/[token]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/[token].js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -30,10 +35,19 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+<<<<<<< HEAD
     "/category/[id]": [
+=======
+    "/profile": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/category/[id].js"
+      "static/chunks/pages/profile.js"
+    ],
+    "/requirements": [
+>>>>>>> c584cbb27928e8e767eb2d7e7a995f57360348e8
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/requirements.js"
     ]
   },
   "ampFirstPages": []

@@ -35,7 +35,7 @@ const footer_content = [
       { link: "/", text: "Арендаторам" },
       { link: "/", text: "Карты лояльности" },
       { link: "/", text: "Подарочные сертификаты" },
-      { link: "/", text: "Гарантии Фрунзе" },
+      { link: "/requirements", text: "Условия акции" },
     ],
   },
 ];
