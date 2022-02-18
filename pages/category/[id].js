@@ -8,11 +8,9 @@ import {
   categorySelectors,
 } from '../../redux/products/category.slice';
 import { useDispatch, useSelector } from 'react-redux';
-
-
+import BasicBreadcrumbs from '../../components/Breadcrumbs/BreadLoveSosa';
 
 export default function Category() {
-
   useEffect(() => {
     getCart();
   }, []);
@@ -24,15 +22,15 @@ export default function Category() {
     dispatch(getAllCategoryEntities(1));
   }, []);
 
-  const [checking, setChecking] = useState(checkItem)
+  const [checking, setChecking] = useState(checkItem);
 
-  useEffect(()=>{
-    setChecking(checkItem)
-  })
+  useEffect(() => {
+    setChecking(checkItem);
+  });
   const category = useSelector((state) => categorySelectors.selectAll(state));
 
   const getCart = () => {
-    let cart = JSON.parse(window.localStorage.getItem("cart"));
+    let cart = JSON.parse(window.localStorage.getItem('cart'));
     if (!cart) {
       cart = {
         products: [],
@@ -46,9 +44,8 @@ export default function Category() {
     );
   };
 
-
   const addToLocal = async (product) => {
-    let cart = JSON.parse(window.localStorage.getItem("cart"));
+    let cart = JSON.parse(window.localStorage.getItem('cart'));
     if (!cart) {
       cart = {
         products: [],
@@ -63,25 +60,25 @@ export default function Category() {
       (item) => item.item.id === product.id
     );
     if (filteredCart.length > 0) {
-      cart.products = cart.products.filter((item) => item.item.id !== product.id);
+      cart.products = cart.products.filter(
+        (item) => item.item.id !== product.id
+      );
     } else {
       cart.products.push(newProduct);
     }
-     window.localStorage.setItem('cart', JSON.stringify(cart))
-     getCart()
-     
-  }
+    window.localStorage.setItem('cart', JSON.stringify(cart));
+    getCart();
+  };
 
-
-  function checkItem (prod){
-    if(typeof localStorage != "undefined"){
-      let cart = JSON.parse(localStorage.getItem("cart"));
-      for(let i = 0; i < cart?.products?.length; i++){
+  function checkItem(prod) {
+    if (typeof localStorage != 'undefined') {
+      let cart = JSON.parse(localStorage.getItem('cart'));
+      for (let i = 0; i < cart?.products?.length; i++) {
         const item = cart.products[i];
-        if(item.item.id === prod){
-          return "red";
+        if (item.item.id === prod) {
+          return 'red';
         }
-        return "";
+        return '';
       }
     }
   }
@@ -89,7 +86,9 @@ export default function Category() {
   return (
     <>
       <div className={classes.container}>
-        <Logos image={logo.src} /> <h1> Категории: </h1>{' '}
+        <Logos image={logo.src} />
+        <BasicBreadcrumbs />
+        <h1 className={classes.title}> Категории</h1>{' '}
         <div className={classes.contet}>
           <div className={classes.container_home}>
             <div className={classes.category_item}>
@@ -109,8 +108,9 @@ export default function Category() {
                           <div
                             className={classes.top}
                             style={{
-                              background: `url(${!!item.image && item.image
-                                }) no-repeat center center`,
+                              background: `url(${
+                                !!item.image && item.image
+                              }) no-repeat center center`,
                             }}
                           >
                             {' '}
@@ -122,9 +122,15 @@ export default function Category() {
                               </div>{' '}
                               <div className={classes.buy}>
                                 {' '}
-                                <ShoppingCartIcon style={{ color: checkItem(item.id), cursor: 'pointer' }} onClick={() => {
-                                  addToLocal(item);
-                                }} />
+                                <ShoppingCartIcon
+                                  style={{
+                                    color: checkItem(item.id),
+                                    cursor: 'pointer',
+                                  }}
+                                  onClick={() => {
+                                    addToLocal(item);
+                                  }}
+                                />
                               </div>
                             </div>{' '}
                             <div className={classes.right}>
@@ -191,4 +197,3 @@ export default function Category() {
     </>
   );
 }
-

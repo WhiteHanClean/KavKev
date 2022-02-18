@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-.container{
+.container {
   min-height: 70vh;
   background: white;
   padding: 20px 0 0 0;
+  .title {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
 }
 .contet {
   max-width: 1200px;
@@ -10,7 +15,7 @@
 }
 .wrapper {
   width: 300px;
-  height: 500px;
+  height: 400px;
   background: white;
   margin: auto;
   position: relative;
@@ -61,6 +66,9 @@
           padding: 20px;
           float: left;
           width: calc(70% - 40px);
+          h1 {
+            font-size: 15px;
+          }
         }
         .buy {
           float: right;
