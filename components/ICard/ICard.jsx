@@ -7,7 +7,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import Link from 'next/link';
 function ICard({item}) {
     return (
-        <Card sx={{ width: "80%", marginLeft: "10%"}}>
+        <Card sx={{ width: "80%", marginLeft: "11%", borderRadius: "20px"}}>
         <CardActionArea>
         <Link href={`/category/${item.id }`}>
           <CardMedia
