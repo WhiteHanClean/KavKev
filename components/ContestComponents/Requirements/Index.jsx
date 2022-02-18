@@ -10,7 +10,7 @@ import insta from "../../../assets/ig.png";
 
 const Requirements = () => {
     return(
-        <Container style={{ maxWidth: "720px" }} className={styles.Cuntainer} >
+        <Container style={{ maxWidth: "720px", marginTop: 140 }} className={styles.Cuntainer} >
             <Typography
                 component="h5"
                 variant="h5"

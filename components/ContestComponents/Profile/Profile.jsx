@@ -52,18 +52,28 @@ function Profile() {
     const contests = useSelector((state) => state.profile.lol.contests);
     const tokens = useSelector((state) => state.profile.lol.tokens);
 
-    const isToken = () => {
-        return true;
-    };
-
-    const [open, setOpen] = React.useState(isToken);
+    
 
     const handleClose = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("isTook");
         setOpen(false);
     };
-
+    if(typeof localStorage !== "undefined"){
+        
+    }
+    const isToken = () => {
+        if(typeof localStorage !== "undefined"){
+            if (typeof localStorage.token !== "undefined") {
+                console.log("return true");
+                return true;
+            } else {
+                console.log("return false");
+                return false;
+            }
+        }
+        
+    };
     const isTookView = () => {
         if (typeof localStorage !== "undefined") {
             if (localStorage.isTook == 404) {
@@ -78,12 +88,14 @@ function Profile() {
                         Нельзя отсканировать более 3 кодов в день
                     </Typography>
                 );
-            } else {
+            } else if(localStorage.isTook == 200){
                 return (
                     <Typography component="h5" variant="h5">
                         Код отсканирован успешно
                     </Typography>
                 );
+            } else{
+
             }
         }
     };
@@ -127,6 +139,8 @@ function Profile() {
             </Typography>
         );
     });
+
+    const [open, setOpen] = React.useState(isToken);
 
     return (
         <Container className={classes.Container}>
@@ -172,7 +186,9 @@ function Profile() {
                     </Button>
                 </Box>
             </Modal>
-            <Typography component="h5" variant="h5">
+            <Typography component="h5" variant="h5" style={{
+                marginTop: "30px"
+            }}>
                 Добро пожаловать на страницу профиля,
             </Typography>
             <Typography component="h5" variant="h5">
@@ -180,9 +196,11 @@ function Profile() {
             </Typography>
             <div className={classes.SmallInfo}>
                 <p>Зарегистрировано кодов</p>
-                <p>Отсканированно за сегодня</p>
+                <p>Отсканированно за сегодня:</p>
                 {profile?.qr_in_day}
-                <p>Всего</p>
+                <br/>
+                <br/>
+                <p>Всего:</p>
                 {profile?.qr_quantity}
             </div>
 
@@ -210,7 +228,7 @@ function Profile() {
                 <br />
                 {listItems}
             </Typography>
-            <Link href="/shop" style={{ margin: "70px 0 0 0" }}>
+            <Link href="/" style={{ margin: "70px 0 0 0" }}>
                 <Typography
                     component="h5"
                     variant="h6"
@@ -237,7 +255,7 @@ function Profile() {
                 variant="h6"
                 style={{ margin: "70px 0 70px 0" }}
             >
-                <Link href="/contest-about">Условия акции</Link>
+                <Link href="/requirements">Условия акции</Link>
             </Typography>
         </Container>
     );

@@ -61,15 +61,10 @@ export default function () {
             container="main"
             maxWidth="xs"
         >
-            <img
-                src={logo.src}
-                alt="kavkevlogo"
-                className={classes.ContImage}
-            />
             <Typography
                 component="h2"
                 variant="h4"
-                classes={{ fontSize: "12px" }}
+                style={{ marginTop: "90px" }}
             >
                 Поздравляем! Вы активировали QR код
             </Typography>
