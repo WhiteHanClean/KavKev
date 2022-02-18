@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Menu from "@mui/material/Menu";
 import { Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import cl from "../Cart/CartModal.module.scss";
 import CartModalList from "./CartModalList";
-import axios from "axios";
 import Link from "next/link";
-const CartModal = () => {
-  const [carts, setCarts] = useState([]);
+import { cartSelectors, sendCartDataToApi } from '../../redux/forCart/cartSlice'
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
+const CartModal = () => {
+  const cartItems = useSelector(cartSelectors.selectAll);
+  // const cartItems = useSelector((state)=>cartSelectors.selectAll(state));
+  // const totalPrice = useSelector((state)=>state.cart.totalPrice)
+
+  const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const dispatch = useDispatch()
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -18,75 +25,16 @@ const CartModal = () => {
     setAnchorEl(null);
   };
 
-  // const forGet = JSON.parse(localStorage.getItem("cart"));
-  // if(typeof localStorage !== "undefined"){
-  //   let cart = JSON.parse(window.localStorage.getItem("cart"));
-  //
-  // }
-
-  const getCart = () => {
-    let cart = JSON.parse(window.localStorage.getItem("cart"));
-    if (!cart) {
-      cart = {
-        products: [],
-        totalPrice: 0,
-      };
-    }
-    setCarts(
-      cart.products.map(({ item }) => {
-        return { ...item, count: 1 };
-      })
-    );
-  };
-
-  useEffect(() => {
-    getCart();
-  }, []);
-
-  function changeProductCount(amount, id) {
-    if (amount <= 0) {
-      amount = 1;
-    }
-    let cart = JSON.parse(localStorage.getItem("cart"));
-
-    cart.products = cart.products.map((item) => {
-      console.log(item.item.id, item);
-      if (item.item.id === id) {
-        item.item.amount = amount;
-        item.subPrice = +item.item.amount * +item.item.price;
-      }
-      return item;
-    });
-    // cart.totalPrice = calcTotalPrice(cart.products);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    getCart();
-  }
-
   function postItem() {
-    carts.map((item) => {
-      axios({
-        method: "post",
-        url: `http://api-kavkev.kg:8080/api/product/${item.id}/cart/`,
-        headers: {
-          Authorization: `Token ${localStorage.userToken}`,
-        },
-        data: {
-          amount: `${item.amount}`,
-        },
-      })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          alert(`Просим прощения, ${item.name_product} в наличии нет`);
-        });
-    });
+    dispatch(sendCartDataToApi(()=>{
+      router.push('/cart');
+    }))
     handleClose();
   }
 
   return (
     <div>
-      <Badge badgeContent={carts.length} color="success">
+      <Badge badgeContent={cartItems.length} color="success">
         <ShoppingCartIcon
           onClick={handleClick}
           style={{ fontSize: "50px", color: "red", cursor: "pointer" }}
@@ -103,25 +51,21 @@ const CartModal = () => {
       >
         <div className={cl.menushka}>
           <div className={cl.head}>
-            <h5>Количество товаров: {carts.length}</h5>
+            <h5>Количество товаров: {cartItems.length}</h5>
             <p>в вашей корзине</p>
           </div>
           <div className={cl.main_container}>
-            {!!carts?.length &&
-              carts.map((item) => (
+            {!!cartItems?.length &&
+              cartItems.map((item) => (
                 <CartModalList
                   key={item.id}
                   item={item}
-                  getCart={getCart}
-                  changeProductCount={changeProductCount}
                 />
               ))}
           </div>
-          {carts.length > 0 ? (
-            <div className={cl.footer}>
-              <Link href="/cart">
-                <h6 onClick={() => postItem()}>В корзину </h6>
-              </Link>
+          {cartItems.length > 0 ? (
+            <div onClick={postItem} className={cl.footer}>
+              <h6>В корзину </h6>
             </div>
           ) : null}
         </div>

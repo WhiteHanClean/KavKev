@@ -8,91 +8,61 @@ import {
   categorySelectors,
 } from '../../redux/products/category.slice';
 import { useDispatch, useSelector } from 'react-redux';
-import BasicBreadcrumbs from '../../components/Breadcrumbs/BreadLoveSosa';
+import BasicBreadcrumbs from '../../components/Breadcrumbs/BreadLoveSosaTwo';
+import { addItemToCart, cartSelectors, removeItemFromCart } from '../../redux/forCart/cartSlice';
+
 
 export default function Category() {
   
 
   const dispatch = useDispatch();
 
-  const [carted, setCarts] = useState(0);
+  const cart = useSelector(cartSelectors.selectAll);
 
-  useEffect(() => {
-    getCart();
-  }, []);
+ 
+
+  
 
   useEffect(() => {
     dispatch(getAllCategoryEntities(1));
   }, []);
 
-  const [checking, setChecking] = useState(checkItem);
-
-  useEffect(() => {
-    setChecking(checkItem);
-  });
+ 
 
   const category = useSelector((state) => categorySelectors.selectAll(state));
 
-  const getCart = () => {
-    let cart = JSON.parse(window.localStorage.getItem('cart'));
-    if (!cart) {
-      cart = {
-        products: [],
-        totalPrice: 0,
-      };
-    }
-    setCarts(
-      cart.products.map(({ item }) => {
-        return { ...item, count: 1 };
-      })
-    );
-  };
+  
 
 
 
   const addToLocal = async (product) => {
-    let cart = JSON.parse(window.localStorage.getItem('cart'));
-    if (!cart) {
-      cart = {
-        products: [],
-      };
-    }
     let newProduct = {
+      id: product.id,
       item: product,
       count: 1,
       subPrice: product.price,
     };
-    let filteredCart = cart.products.filter(
-      (item) => item.item.id === product.id
-    );
-    if (filteredCart.length > 0) {
-      cart.products = cart.products.filter(
-        (item) => item.item.id !== product.id
-      );
-    } else {
-      cart.products.push(newProduct);
+    if(cart.find(cartItem=>cartItem.id === product.id)){
+      dispatch(removeItemFromCart(product.id))
+    }else{
+      dispatch(addItemToCart(newProduct));
     }
-    window.localStorage.setItem('cart', JSON.stringify(cart));
-    getCart();
   };
 
-  function checkItem(prod) {
-    if (typeof localStorage != 'undefined') {
-      let cart = JSON.parse(localStorage.getItem('cart'));
-      for (let i = 0; i < cart?.products?.length; i++) {
-        const item = cart.products[i];
-        if (item.item.id === prod) {
-          return 'red';
-        }
-      }
+  function checkItem(product) {
+ 
+    if(cart.find(cartItem=>cartItem.id === product.id)){
+      return "red"
+    }else{
+      return "black"
     }
   }
 
   return (
     <>
       <div className={classes.container}>
+       
         <Logos image={logo.src} />
-        <BasicBreadcrumbs />
         <h1 className={classes.title}> Категории</h1>{' '}
         <div className={classes.contet}>
           <div className={classes.container_home}>
@@ -107,7 +77,9 @@ export default function Category() {
               >
                 {!!category &&
                   category.map((item) => {
-                    return (
+                    console.log(item.id)
+                    return (<>
+                      {/* <BasicBreadcrumbs id={item.id} title={item.title}/> */}
                       <div key={item.id} className={classes.wrapper}>
                         <div className={classes.container}>
                           <div
@@ -129,7 +101,7 @@ export default function Category() {
                                 {' '}
                                 <ShoppingCartIcon
                                   style={{
-                                    color: checkItem(item.id),
+                                    color: checkItem(item),
                                     cursor: 'pointer',
                                   }}
                                   onClick={() => {
@@ -192,6 +164,7 @@ export default function Category() {
                           </div>{' '}
                         </div>{' '}
                       </div>
+                      </>
                     );
                   })}
               </div>
