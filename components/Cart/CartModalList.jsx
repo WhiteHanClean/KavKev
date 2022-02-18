@@ -26,7 +26,7 @@ const CartModalList = ({ item, getCart, changeProductCount }) => {
   // };
 
   return (
-    <div>
+    
       <div className={cl.menu}>
         <Image src={fo} alt="smart" width={60} height={60} />
         <div className={cl.menu_inner}>
@@ -62,7 +62,6 @@ const CartModalList = ({ item, getCart, changeProductCount }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

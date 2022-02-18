@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -10,12 +13,14 @@ body {
 
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
   width: 400px !important;
-  padding: 0px !important;  
-  height: 400px;
+  padding: 0px !important;
+  height: auto;
 }
 
-
-.css-6hp17o-MuiList-root-MuiMenu-list{
-    padding: 0px;
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  padding: 0px;
 }
 
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
+  min-width: 0px;
+}

@@ -8,7 +8,6 @@ import axios from "axios";
 import Link from "next/link";
 
 const CartModal = () => {
-  
   const [carts, setCarts] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -59,7 +58,7 @@ const CartModal = () => {
 
   function postItem() {
     carts.map((item) => {
-      console.log(item)
+      console.log(item);
       axios({
         method: "post",
         url: `http://api-kavkev.kg:8080/api/product/${item.id}/cart/`,
@@ -74,9 +73,10 @@ const CartModal = () => {
           console.log(res);
         })
         .catch((err) => {
-          alert(`Просим прощения, ${item.name_product} в наличии нет`)
+          alert(`Просим прощения, ${item.name_product} в наличии нет`);
         });
     });
+    handleClose();
   }
 
   return (
@@ -101,21 +101,24 @@ const CartModal = () => {
             <h5>Количество товаров: {carts.length}</h5>
             <p>в вашей корзине</p>
           </div>
-          {!!carts?.length &&
-            carts.map((item) => (
-              <div className={cl.main_container} key={item.id}>
+          <div className={cl.main_container}>
+            {!!carts?.length &&
+              carts.map((item) => (
                 <CartModalList
+                  key={item.id}
                   item={item}
                   getCart={getCart}
                   changeProductCount={changeProductCount}
                 />
-              </div>
-            ))}
-          <div className={cl.footer}>
-            <Link href="/cart">
-            <h6 onClick={() => postItem()}>В корзину </h6>
-            </Link>
+              ))}
           </div>
+          {carts.length > 0 ? (
+            <div className={cl.footer}>
+              <Link href="/cart">
+                <h6 onClick={() => postItem()}>В корзину </h6>
+              </Link>
+            </div>
+          ) : null}
         </div>
       </Menu>
     </div>

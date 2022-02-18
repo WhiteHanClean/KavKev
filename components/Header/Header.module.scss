@@ -1,0 +1,29 @@
+.container{
+    width: 100vw;
+    height: 100px;
+    padding: 0 10vw 0 10vw; 
+    position: fixed;
+    display: flex;
+    z-index: 100;
+    background-color: #fff;
+    top: 0;
+    align-items: center;
+    justify-content: space-between;
+    .logo{
+        display: flex;
+        align-items: center;
+        grid-gap: 10px;
+        &__img{
+            img{
+                width: 75px !important;
+                height: 75px !important;
+            }
+        }
+        &__text{
+            font-size: 25px;
+        }
+    }
+    .busket{
+        width: 30px;
+    }
+}

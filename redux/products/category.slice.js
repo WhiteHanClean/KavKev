@@ -26,6 +26,7 @@ export const getAllCategoryEntities = createAsyncThunk(
   async (id) => {
     try {
       const { data } = await $api.get(`/category/${id}/`);
+      // const data2 = await $api.get('/product');
       return data;
     } catch (e) {
       return e.error.message;
