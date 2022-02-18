@@ -1,9 +1,22 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
-body{
-    background: #f4f4f4;
+body {
+  background: #f4f4f4;
+}
+
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+  width: 400px !important;
+  padding: 0px !important;
+  height: auto;
+}
+
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  padding: 0px;
 }
