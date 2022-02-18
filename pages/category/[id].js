@@ -109,7 +109,7 @@ export default function Category() {
                               className={classes.top}
                               style={{
                                 background: `url(${
-                                  !!item.image && item.image.src
+                                  !!item.image && item.image
                                 }) no-repeat center center`,
                               }}
                             >
