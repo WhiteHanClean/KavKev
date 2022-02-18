@@ -35,7 +35,7 @@ export default function BasicBreadcrumbs() {
         </Link>
         <Link underline='hover' color='inherit' href='#'>
           <a
-            style={{ textDecoration: 'none', color: 'rgba(214,52,71)' }}
+            style={{ textDecoration: 'none', color: 'black' }}
             className={classes.liink}
           >
             Корзина

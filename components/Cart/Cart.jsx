@@ -5,46 +5,59 @@ import Image from 'next/image';
 import { Button } from '@mui/material';
 import axios from 'axios';
 import BreadLoveSosaTwo from '../Breadcrumbs/BreadLoveSosaTwo';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCartItems, cartSelectors } from '../../redux/forCart/cartSlice';
 
 const Cart = () => {
+  const [afterCart, setAfterCarts] = useState(null);
   const [total, setTotal] = useState(0);
-  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchCartItems());
+    getItemFromBack();
   }, []);
 
-  const cart = useSelector((state) => cartSelectors.selectAll(state));
+  async function getItemFromBack() {
+    await axios({
+      method: 'get',
+      url: `http://kavkev.kg:8080/api/my_cart/`,
+      headers: {
+        Authorization: `Token ${localStorage.userToken}`,
+      },
+    })
+      .then((res) => {
+        setAfterCarts(res.data[0].all_products);
+        setTotal(res.data[0].sum_price);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
-  // function deleteItem(id) {
-  //   axios({
-  //     method: 'post',
-  //     url: `http://api-kavkev.kg:8080/api/product/${id}/cart/`,
-  //     headers: {
-  //       Authorization: `Token ${localStorage.userToken}`,
-  //     },
-  //     data: {
-  //       amount: 0,
-  //     },
-  //   })
-  //     .then((res) => {
-  //       console.log('elfkbkjcm');
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
+  function deleteItem(id) {
+    axios({
+      method: 'post',
+      url: `http://api-kavkev.kg:8080/api/product/${id}/cart/`,
+      headers: {
+        Authorization: `Token ${localStorage.userToken}`,
+      },
+      data: {
+        amount: 0,
+      },
+    })
+      .then((res) => {
+        console.log('elfkbkjcm');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-  //   getItemFromBack();
-  // }
+    getItemFromBack();
+  }
 
   return (
     <>
       <BreadLoveSosaTwo />
       <div className={cl.cart_container}>
         <div>
-          {!!cart &&
-            cart.map((item) => (
+          {!!afterCart?.length &&
+            afterCart.map((item) => (
               <div className={cl.cart_container_inner}>
                 <div className={cl.cart_container_inner_block}>
                   <Image src={fo} alt='adsa' className={cl.img} />
@@ -71,8 +84,8 @@ const Cart = () => {
           <div className={cl.check_head}>
             <h3>Детали цен</h3>
           </div>
-          {!!cart &&
-            cart.map((item) => (
+          {!!afterCart?.length &&
+            afterCart.map((item) => (
               <div className={cl.check_main}>
                 <p>
                   {item.product.name_product} | {item.quantity_product}*
