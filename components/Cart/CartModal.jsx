@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Menu from "@mui/material/Menu";
 import { Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -6,9 +6,9 @@ import cl from "../Cart/CartModal.module.scss";
 import CartModalList from "./CartModalList";
 import axios from "axios";
 import Link from "next/link";
-
 const CartModal = () => {
   const [carts, setCarts] = useState([]);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -17,6 +17,12 @@ const CartModal = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  // const forGet = JSON.parse(localStorage.getItem("cart"));
+  // if(typeof localStorage !== "undefined"){
+  //   let cart = JSON.parse(window.localStorage.getItem("cart"));
+  //
+  // }
 
   const getCart = () => {
     let cart = JSON.parse(window.localStorage.getItem("cart"));
@@ -32,6 +38,10 @@ const CartModal = () => {
       })
     );
   };
+
+  useEffect(() => {
+    getCart();
+  }, []);
 
   function changeProductCount(amount, id) {
     if (amount <= 0) {
@@ -52,13 +62,8 @@ const CartModal = () => {
     getCart();
   }
 
-  React.useEffect(() => {
-    getCart();
-  }, []);
-
   function postItem() {
     carts.map((item) => {
-      console.log(item);
       axios({
         method: "post",
         url: `http://api-kavkev.kg:8080/api/product/${item.id}/cart/`,

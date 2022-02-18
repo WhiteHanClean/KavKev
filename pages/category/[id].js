@@ -11,13 +11,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import BasicBreadcrumbs from '../../components/Breadcrumbs/BreadLoveSosa';
 
 export default function Category() {
+  
+
+  const dispatch = useDispatch();
+
+  const [carted, setCarts] = useState(0);
+
   useEffect(() => {
     getCart();
   }, []);
 
-  const dispatch = useDispatch();
-
-  const [carts, setCarts] = useState([]);
   useEffect(() => {
     dispatch(getAllCategoryEntities(1));
   }, []);
@@ -44,6 +47,8 @@ export default function Category() {
       })
     );
   };
+
+
 
   const addToLocal = async (product) => {
     let cart = JSON.parse(window.localStorage.getItem('cart'));
