@@ -13,7 +13,6 @@ export default function BasicBreadcrumbs() {
       style={{ background: 'white' }}
       role='presentation'
       onClick={handleClick}
-      className={classes.conta}
     >
       <Breadcrumbs aria-label='breadcrumb'>
         <Link underline='hover' color='inherit' href='/'>

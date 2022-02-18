@@ -11,19 +11,17 @@ const Cart = () => {
   const [total, setTotal] = useState(0);
   useEffect(() => {
     getItemFromBack();
-    console.log(afterCart);
   }, []);
 
   async function getItemFromBack() {
     await axios({
       method: 'get',
-      url: `http://api-kavkev.kg:8080/api/my_cart/`,
+      url: `http://kavkev.kg:8080/api/my_cart/`,
       headers: {
         Authorization: `Token ${localStorage.userToken}`,
       },
     })
       .then((res) => {
-        console.log(res);
         setAfterCarts(res.data[0].all_products);
         setTotal(res.data[0].sum_price);
       })

@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import Menu from "@mui/material/Menu";
-import { Badge } from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import cl from "../Cart/CartModal.module.scss";
-import CartModalList from "./CartModalList";
-import axios from "axios";
-import Link from "next/link";
+import React, { useState } from 'react';
+import Menu from '@mui/material/Menu';
+import { Badge } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import cl from '../Cart/CartModal.module.scss';
+import CartModalList from './CartModalList';
+import axios from 'axios';
+import Link from 'next/link';
 
 const CartModal = () => {
-  
   const [carts, setCarts] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -20,7 +19,7 @@ const CartModal = () => {
   };
 
   const getCart = () => {
-    let cart = JSON.parse(window.localStorage.getItem("cart"));
+    let cart = JSON.parse(window.localStorage.getItem('cart'));
     if (!cart) {
       cart = {
         products: [],
@@ -38,7 +37,7 @@ const CartModal = () => {
     if (amount <= 0) {
       amount = 1;
     }
-    let cart = JSON.parse(localStorage.getItem("cart"));
+    let cart = JSON.parse(localStorage.getItem('cart'));
 
     cart.products = cart.products.map((item) => {
       console.log(item.item.id, item);
@@ -49,7 +48,7 @@ const CartModal = () => {
       return item;
     });
     // cart.totalPrice = calcTotalPrice(cart.products);
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(cart));
     getCart();
   }
 
@@ -59,9 +58,9 @@ const CartModal = () => {
 
   function postItem() {
     carts.map((item) => {
-      console.log(item)
+      console.log(item);
       axios({
-        method: "post",
+        method: 'post',
         url: `http://api-kavkev.kg:8080/api/product/${item.id}/cart/`,
         headers: {
           Authorization: `Token ${localStorage.userToken}`,
@@ -70,30 +69,28 @@ const CartModal = () => {
           amount: `${item.amount}`,
         },
       })
-        .then((res) => {
-          console.log(res);
-        })
+        .then((res) => {})
         .catch((err) => {
-          alert(`Просим прощения, ${item.name_product} в наличии нет`)
+          alert(`Просим прощения, ${item.name_product} в наличии нет`);
         });
     });
   }
 
   return (
     <div>
-      <Badge badgeContent={carts.length} color="success">
+      <Badge badgeContent={carts.length} color='success'>
         <ShoppingCartIcon
           onClick={handleClick}
-          style={{ fontSize: "50px", color: "red", cursor: "pointer" }}
+          style={{ fontSize: '50px', color: 'red', cursor: 'pointer' }}
         />
       </Badge>
       <Menu
-        id="basic-menu"
+        id='basic-menu'
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          "aria-labelledby": "basic-button",
+          'aria-labelledby': 'basic-button',
         }}
       >
         <div className={cl.menushka}>
@@ -112,8 +109,8 @@ const CartModal = () => {
               </div>
             ))}
           <div className={cl.footer}>
-            <Link href="/cart">
-            <h6 onClick={() => postItem()}>В корзину </h6>
+            <Link href='/cart'>
+              <h6 onClick={() => postItem()}>В корзину </h6>
             </Link>
           </div>
         </div>
