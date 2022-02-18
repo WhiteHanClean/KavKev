@@ -25,7 +25,7 @@ export default function BasicBreadcrumbs() {
             Главное меню
           </a>
         </Link>
-        <Link underline='hover' color='inherit' href='category/1'>
+        <Link underline='hover' color='inherit' href='/category/1'>
           <a
             style={{ textDecoration: 'none', color: 'black' }}
             className={classes.liink}
@@ -33,7 +33,7 @@ export default function BasicBreadcrumbs() {
             Категории
           </a>
         </Link>
-        <Link underline='hover' color='inherit' href='#'>
+        <Link underline='hover' color='inherit' href='/cart'>
           <a
             style={{ textDecoration: 'none', color: 'black' }}
             className={classes.liink}
