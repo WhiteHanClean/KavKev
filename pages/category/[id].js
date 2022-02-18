@@ -6,7 +6,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useRouter } from 'next/router';
 import { getCategory } from '../../redux/products/category.slice';
 import { useDispatch, useSelector } from 'react-redux';
-import BasicBreadcrumbs from '../../components/Breadcrumbs/BreadLoveSosa';
+import BasicBreadcrumbs from '../../components/Breadcrumbs/BreadLoveSosaTwo';
 
 export default function Category() {
   useEffect(() => {
@@ -109,7 +109,7 @@ export default function Category() {
                               className={classes.top}
                               style={{
                                 background: `url(${
-                                  !!item.image && item.image
+                                  !!item.image && item.image.src
                                 }) no-repeat center center`,
                               }}
                             >

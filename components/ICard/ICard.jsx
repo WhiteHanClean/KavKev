@@ -10,7 +10,12 @@ function ICard({ item }) {
     <Card sx={{ width: '80%', marginLeft: '11%', borderRadius: '20px' }}>
       <CardActionArea>
         <Link href={`/category/${item.id}`}>
-          <CardMedia component='img' image={item.image} alt={item.name} />
+          <CardMedia
+            style={{ height: '360px' }}
+            component='img'
+            image={item.image}
+            alt={item.name}
+          />
         </Link>
         <CardContent style={{ textAlign: 'start', marginTop: '16px' }}>
           <Typography gutterBottom variant='h5' component='div'>
