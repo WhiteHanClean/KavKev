@@ -1,5 +1,5 @@
 import logo from '../../assets/logo2.png';
-import Logos from '../../components/logos';
+import Logos from '../../components/Logos';
 import classes from './category.module.scss';
 import { useEffect, useState } from 'react';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
