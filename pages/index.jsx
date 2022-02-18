@@ -76,10 +76,9 @@ const index = () => {
     }
   }, []);
   useEffect(() => {
-    // component is mounted and window is available
+    // component is mounted and window is available)
     handleWindowResize();
     window.addEventListener('resize', handleWindowResize);
-    // unsubscribe from the event on component unmount
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
   const keywords = `kavkev, kev kev, кавкев, кав кев,насвай ураган, сендвичи, сендвичи кав кев, сыры, сендвичи бишкек, бишкек КАВКЕВ,бишкек кафкев, каф-кев, кав-КЕВ, КАв-кев, СЫРЫ, сендвичи Питер`;
