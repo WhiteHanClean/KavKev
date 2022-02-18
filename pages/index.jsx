@@ -79,14 +79,18 @@ const index = () => {
     // unsubscribe from the event on component unmount
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
-
+  const keywords = `kavkev, kev kev, кавкев, кав кев,насвай ураган, сендвичи, сендвичи кав кев, сыры, сендвичи бишкек, бишкек`;
   return (
     <div>
       <Head>
-        <title>Насвай</title>
-        <meta name='keywords' content='soska' />
-        <meta name='description' content='' />
+        <title>Kav&kev || Интернет-Магазин || Категории товаров</title>
+        <meta name='keywords' content={keywords} />
+        <meta
+          name='description'
+          content='Оптовый Интернет-магазин продукции от Kav&Kev. Выберите и закажите партию продуктов онлайн!'
+        />
         <meta charSet='uft-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <Logos image={logo.src} />
       <h1
