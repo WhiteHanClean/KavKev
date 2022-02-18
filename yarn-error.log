@@ -1,21 +1,20 @@
 Arguments: 
-  /snap/node/5880/bin/node /snap/node/5880/bin/yarn.js add @material-ui/core
+  C:\Program Files\nodejs\node.exe C:\Users\Acer\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @mui/icons-material
 
 PATH: 
-  /home/abror/.local/bin:/home/abror/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  C:\Users\Acer\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Acer\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin;C:\Program Files (x86)\MySQL\MySQL Server 5.0\bin;C:\Program Files\MySQL\MySQL Server 5.5\bin;C:\Users\Acer\AppData\Local\Microsoft\WindowsApps;C:\Users\Acer\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm 2020.1.2\bin;C:\Users\Acer\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
   1.22.17
 
 Node version: 
-  16.14.0
+  16.13.0
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: connect EHOSTUNREACH 104.16.23.35:443
-      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1157:16)
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Acer\Desktop\kavKev\KavKev\node_modules\@next\swc-win32-x64-msvc\next-swc.win32-x64-msvc.node'
 
 npm manifest: 
   {
@@ -33,6 +32,7 @@ npm manifest:
       "@emotion/react": "^11.7.1",
       "@emotion/styled": "^11.6.0",
       "@material-ui/core": "^4.12.3",
+      "@material-ui/icons": "^4.11.2",
       "@mui/material": "^5.4.1",
       "@reduxjs/toolkit": "^1.7.2",
       "axios": "^0.25.0",
@@ -1156,7 +1156,7 @@ Lockfile:
       "@jridgewell/resolve-uri" "^3.0.3"
       "@jridgewell/sourcemap-codec" "^1.4.10"
   
-  "@material-ui/core@^4.12.3":
+  "@material-ui/core@^4.0.0", "@material-ui/core@^4.12.3":
     "integrity" "sha512-sdpgI/PL56QVsEJldwEe4FFaFTLUqN+rd7sSZiRCdx2E/C7z5yK0y/khAWVBH24tXwto7I1hCzNWfJGZIYJKnw=="
     "resolved" "https://registry.npmjs.org/@material-ui/core/-/core-4.12.3.tgz"
     "version" "4.12.3"
@@ -1173,6 +1173,13 @@ Lockfile:
       "prop-types" "^15.7.2"
       "react-is" "^16.8.0 || ^17.0.0"
       "react-transition-group" "^4.4.0"
+  
+  "@material-ui/icons@^4.11.2":
+    "integrity" "sha512-fQNsKX2TxBmqIGJCSi3tGTO/gZ+eJgWmMJkgDiOfyNaunNaxcklJQFaFogYcFl0qFuaEz1qaXYXboa/bUXVSOQ=="
+    "resolved" "https://registry.npmjs.org/@material-ui/icons/-/icons-4.11.2.tgz"
+    "version" "4.11.2"
+    dependencies:
+      "@babel/runtime" "^7.4.4"
   
   "@material-ui/styles@^4.11.4":
     "integrity" "sha512-KNTIZcnj/zprG5LW0Sao7zw+yG3O35pviHzejMdcSGCdWbiO8qzRgOYL8JAxAsWBKOKYwVZxXtHWaB5T2Kvxew=="
@@ -1940,6 +1947,11 @@ Lockfile:
     dependencies:
       "react-is" "^16.7.0"
   
+  "hyphenate-style-name@^1.0.3":
+    "integrity" "sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ=="
+    "resolved" "https://registry.npmjs.org/hyphenate-style-name/-/hyphenate-style-name-1.0.4.tgz"
+    "version" "1.0.4"
+  
   "immer@^9.0.7":
     "integrity" "sha512-lk7UNmSbAukB5B6dh9fnh5D0bJTOFKxVg2cyJWTYrWRfhLrLMBquONcUs3aFq507hNoIZEDDh8lb8UtOizSMhA=="
     "resolved" "https://registry.npmjs.org/immer/-/immer-9.0.12.tgz"
@@ -1988,6 +2000,11 @@ Lockfile:
     "version" "4.0.3"
     dependencies:
       "is-extglob" "^2.1.1"
+  
+  "is-in-browser@^1.0.2", "is-in-browser@^1.1.3":
+    "integrity" "sha1-Vv9NtoOgeMYILrldrX3GLh0E+DU="
+    "resolved" "https://registry.npmjs.org/is-in-browser/-/is-in-browser-1.1.3.tgz"
+    "version" "1.1.3"
   
   "is-number@^7.0.0":
     "integrity" "sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng=="

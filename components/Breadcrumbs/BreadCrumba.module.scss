@@ -1,0 +1,9 @@
+.conta {
+  padding-left: 50px;
+  background-color: inherit;
+}
+.liink {
+  &:hover {
+    text-decoration: underline !important;
+  }
+}
