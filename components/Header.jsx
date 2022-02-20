@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CartModal from "./Cart/CartModal";
 const Header = () => {
-
-
 
   return (
     <div

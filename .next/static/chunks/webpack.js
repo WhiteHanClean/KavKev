@@ -132,10 +132,14 @@
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 /******/ 		__webpack_require__.h = function() { return "c357d09430a364ab"; }
 =======
 /******/ 		__webpack_require__.h = function() { return "d1105b79620e7299"; }
 >>>>>>> feature/checkout
+=======
+/******/ 		__webpack_require__.h = function() { return "ad4a6b5ee67da567"; }
+>>>>>>> tariel2
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

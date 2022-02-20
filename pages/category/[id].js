@@ -7,78 +7,68 @@ import { useRouter } from 'next/router';
 import { getCategory } from '../../redux/products/category.slice';
 import { useDispatch, useSelector } from 'react-redux';
 import BasicBreadcrumbs from '../../components/Breadcrumbs/BreadLoveSosaTwo';
+<<<<<<< HEAD
+=======
+import { addItemToCart, cartSelectors, removeItemFromCart } from '../../redux/forCart/cartSlice';
+
+>>>>>>> tariel2
 
 export default function Category() {
-  useEffect(() => {
-    getCart();
-  }, []);
+  
 
   const dispatch = useDispatch();
+<<<<<<< HEAD
   const [carts, setCarts] = useState([]);
   const router = useRouter();
+=======
+
+  const cart = useSelector(cartSelectors.selectAll);
+
+ 
+
+  
+
+>>>>>>> tariel2
   useEffect(() => {
     dispatch(getCategory(router.query.id));
   }, [router]);
 
-  const [checking, setChecking] = useState(checkItem);
+ 
 
+<<<<<<< HEAD
   useEffect(() => {
     setChecking(checkItem);
   });
 
   const { category } = useSelector((state) => state.category);
+=======
+  const category = useSelector((state) => categorySelectors.selectAll(state));
+>>>>>>> tariel2
 
-  const getCart = () => {
-    let cart = JSON.parse(window.localStorage.getItem('cart'));
-    if (!cart) {
-      cart = {
-        products: [],
-        totalPrice: 0,
-      };
-    }
-    setCarts(
-      cart.products.map(({ item }) => {
-        return { ...item, count: 1 };
-      })
-    );
-  };
+  
+
+
 
   const addToLocal = async (product) => {
-    let cart = JSON.parse(window.localStorage.getItem('cart'));
-    if (!cart) {
-      cart = {
-        products: [],
-      };
-    }
     let newProduct = {
+      id: product.id,
       item: product,
       count: 1,
       subPrice: product.price,
     };
-    let filteredCart = cart.products.filter(
-      (item) => item.item.id === product.id
-    );
-    if (filteredCart.length > 0) {
-      cart.products = cart.products.filter(
-        (item) => item.item.id !== product.id
-      );
-    } else {
-      cart.products.push(newProduct);
+    if(cart.find(cartItem=>cartItem.id === product.id)){
+      dispatch(removeItemFromCart(product.id))
+    }else{
+      dispatch(addItemToCart(newProduct));
     }
-    window.localStorage.setItem('cart', JSON.stringify(cart));
-    getCart();
   };
 
-  function checkItem(prod) {
-    if (typeof localStorage != 'undefined') {
-      let cart = JSON.parse(localStorage.getItem('cart'));
-      for (let i = 0; i < cart?.products?.length; i++) {
-        const item = cart.products[i];
-        if (item.item.id === prod) {
-          return 'red';
-        }
-        return '';
-      }
+  function checkItem(product) {
+ 
+    if(cart.find(cartItem=>cartItem.id === product.id)){
+      return "red"
+    }else{
+      return "black"
     }
   }
 
@@ -86,6 +76,7 @@ export default function Category() {
     <>
       <BasicBreadcrumbs />
       <div className={classes.container}>
+       
         <Logos image={logo.src} />
         <h1 className={classes.title}> Категории</h1>{' '}
         <div className={classes.contet}>
@@ -99,6 +90,7 @@ export default function Category() {
                   flexWrap: 'wrap',
                 }}
               >
+<<<<<<< HEAD
                 {!!category?.products &&
                   category.products.map((item) => {
                     return (
@@ -114,6 +106,42 @@ export default function Category() {
                               }}
                             >
                               {' '}
+=======
+                {!!category &&
+                  category.map((item) => {
+                    console.log(item.id)
+                    return (<>
+                      {/* <BasicBreadcrumbs id={item.id} title={item.title}/> */}
+                      <div key={item.id} className={classes.wrapper}>
+                        <div className={classes.container}>
+                          <div
+                            className={classes.top}
+                            style={{
+                              background: `url(${
+                                !!item.image && item.image
+                              }) no-repeat center center`,
+                            }}
+                          >
+                            {' '}
+                          </div>{' '}
+                          <div className={classes.bottom}>
+                            <div className={classes.left}>
+                              <div className={classes.details}>
+                                <h1> {item.name_product} </h1> <p> £250 </p>{' '}
+                              </div>{' '}
+                              <div className={classes.buy}>
+                                {' '}
+                                <ShoppingCartIcon
+                                  style={{
+                                    color: checkItem(item),
+                                    cursor: 'pointer',
+                                  }}
+                                  onClick={() => {
+                                    addToLocal(item);
+                                  }}
+                                />
+                              </div>
+>>>>>>> tariel2
                             </div>{' '}
                             <div className={classes.bottom}>
                               <div className={classes.left}>
@@ -187,7 +215,12 @@ export default function Category() {
                               </table>{' '}
                             </div>{' '}
                           </div>{' '}
+<<<<<<< HEAD
                         </div>
+=======
+                        </div>{' '}
+                      </div>
+>>>>>>> tariel2
                       </>
                     );
                   })}

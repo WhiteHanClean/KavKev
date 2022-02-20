@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import cl from './CartModal.module.scss';
-import fo from '../../assets/halal.png';
-import Image from 'next/image';
-import { Button } from '@mui/material';
-import axios from 'axios';
-import BreadLoveSosaTwo from '../Breadcrumbs/BreadLoveSosaTwo';
-
+import React, { useEffect, useState } from "react";
+import cl from "./CartModal.module.scss";
+import fo from "../../assets/halal.png";
+import Image from "next/image";
+import { Button } from "@mui/material";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+// import BreadLoveSosaTwo from "../Breadcrumbs/BreadLoveSosaTwo"
 const Cart = () => {
+  const dispatch = useDispatch();
+
+  const deleteFromCart = () => {
+    dispatch(removeItemFromCart(item.id))
+  }
   const [afterCart, setAfterCarts] = useState(null);
   const [total, setTotal] = useState(0);
   useEffect(() => {
@@ -15,8 +20,8 @@ const Cart = () => {
 
   async function getItemFromBack() {
     await axios({
-      method: 'get',
-      url: `http://kavkev.kg:8080/api/my_cart/`,
+      method: "get",
+      url: `http://api-kavkev.kg:8080/api/my_cart/`,
       headers: {
         Authorization: `Token ${localStorage.userToken}`,
       },
@@ -32,7 +37,7 @@ const Cart = () => {
 
   function deleteItem(id) {
     axios({
-      method: 'post',
+      method: "post",
       url: `http://api-kavkev.kg:8080/api/product/${id}/cart/`,
       headers: {
         Authorization: `Token ${localStorage.userToken}`,
@@ -42,7 +47,7 @@ const Cart = () => {
       },
     })
       .then((res) => {
-        console.log('elfkbkjcm');
+        console.log("elfkbkjcm");
       })
       .catch((err) => {
         console.log(err);
@@ -53,14 +58,13 @@ const Cart = () => {
 
   return (
     <>
-      <BreadLoveSosaTwo />
       <div className={cl.cart_container}>
         <div>
           {!!afterCart?.length &&
             afterCart.map((item) => (
               <div className={cl.cart_container_inner}>
                 <div className={cl.cart_container_inner_block}>
-                  <Image src={fo} alt='adsa' className={cl.img} />
+                  <Image src={fo} alt="adsa" className={cl.img} />
                 </div>
                 <div className={cl.cart_container_inner_block}>
                   <h4>{item.product.name_product}</h4>
@@ -69,7 +73,7 @@ const Cart = () => {
                 </div>
                 <div className={cl.block}>
                   <Button
-                    variant='outlined'
+                    variant="outlined"
                     onClick={() => deleteItem(item.product.id)}
                   >
                     Убрать из корзины
@@ -101,8 +105,8 @@ const Cart = () => {
               <p>{total} сом</p>
             </div>
             <Button
-              variant='contained'
-              style={{ background: 'orangered' }}
+              variant="contained"
+              style={{ background: "orangered" }}
               onClick={() => getItemFromBack()}
             >
               Оформить заказ

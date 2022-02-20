@@ -1,48 +1,79 @@
-import {
-  createSlice,
-  createAsyncThunk,
-  createEntityAdapter,
-} from '@reduxjs/toolkit';
-import $api from '../../utils/axios';
+import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
-export const cartAdapter = createEntityAdapter();
-export const cartSelectors = cartAdapter.getSelectors((state) => state.cart);
-
-export const fetchCartItems = createAsyncThunk(
-  'cart/fetchCartItems',
-  async () => {
-    try {
-      const { data } = await $api.get('my_cart');
-      return data;
-    } catch (error) {
-      return e.error.message;
-    }
-  }
-);
-
-const cartSlice = createSlice({
-  name: 'cart',
-  initialState: {
-    loading: false,
-    error: null,
-    ids: [],
-    entities: {},
-  },
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(fetchCartItems.pending, (state) => {
-      state.loading = true;
-    });
-    builder.addCase(fetchCartItems.rejected, (state, action) => {
-      state.error = action.error.message;
-      state.loading = false;
-    });
-    builder.addCase(fetchCartItems.fulfilled, (state, action) => {
-      cartAdapter.setAll(state, action.payload);
-      console.log(action);
-      state.loading = false;
-    });
-  },
+const cartAdapter = createEntityAdapter({
+    selectId: (item)=>item.id
 });
 
-export const cartReducer = cartSlice.reducer;
+export const sendCartDataToApi = createAsyncThunk(
+    'cart/sendCartDataToApi',
+    
+    async (cb, { getState }) => {
+        const cartItems = cartSelectors.selectAll(getState());
+        try{
+            cartItems.map((item) => {
+                axios({
+                    method: "post",
+                    url: `http://api-kavkev.kg:8080/api/product/${item.id}/cart/`,
+                    headers: {
+                        Authorization: `Token ${localStorage.userToken}`,
+                    },
+                    data: {
+                        amount: `${item.count}`,
+                    },
+                });
+            });
+        } catch(e){
+            alert(`Просим прощения, ${item.name_product} в наличии нет`);
+        }
+
+        if(typeof cb === 'function') cb();
+        return 'OK'
+    }
+)
+
+const cartSlice = createSlice({
+    name: "cart",
+    initialState: cartAdapter.getInitialState({
+        totalPrice: 0
+    }),
+    reducers: {
+        addItemToCart: cartAdapter.addOne,
+        removeItemFromCart: cartAdapter.removeOne,
+        clearCart: cartAdapter.removeAll,
+        changeCartItemCount: (state, {payload: { id, newCount }})=>{
+            const cartItem = localCartSelector.selectById(state, id);
+            cartAdapter.updateOne(state, {
+                id,
+                changes: {
+                    count: newCount,
+                    subPrice: parseInt(cartItem.item.amount) * parseInt(cartItem.item.price)
+                }
+            })
+        }
+    },
+
+    extraReducers: (builder) => {
+        builder.addCase(sendCartDataToApi.pending, (state)=>{
+            console.log("Cart sending...");
+        })
+        builder.addCase(sendCartDataToApi.rejected, (state, error)=>{
+            console.log("Cart sending Failed!!");
+        })
+        builder.addCase(sendCartDataToApi.fulfilled, (state, action)=>{
+            console.log("Cart sending success", action.payload);// 'OK'
+        })
+    }
+})
+
+export const {
+    addItemToCart,
+    removeItemFromCart,
+    clearCart,
+    changeCartItemCount,
+} = cartSlice.actions;
+
+const localCartSelector = cartAdapter.getSelectors();
+export const cartSelector = (state)=>state.cart;
+export const cartSelectors = cartAdapter.getSelectors(cartSelector);
+export default cartSlice
