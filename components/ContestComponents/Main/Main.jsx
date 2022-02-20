@@ -13,6 +13,8 @@ import classes from "./Main.module.scss";
 import { ReqLink } from "../../ReqLink";
 import Link from "@mui/material/Link";     
 
+
+
 export default function () {
     const { query } = useRouter();
     const router = useRouter();
