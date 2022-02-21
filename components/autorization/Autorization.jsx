@@ -15,13 +15,15 @@ import {
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { loginUser } from "./usersToken";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Autorization = () => {
   const [values, setValues] = React.useState({
     password: "",
     showPassword: false,
   });
-
+  const router = useRouter();
   const handleClickShowPassword = () => {
     setValues({
       ...values,
@@ -46,18 +48,29 @@ const Autorization = () => {
     setState(values);
   }
 
+  const okey = () => {
+    if (window.localStorage.getItem("userToken")) {
+      router.push("/");
+    } else {
+      return;
+    }
+  };
+
   function check() {
     if (!state.username || !state.password) {
       alert("Заполните все  поля!");
       return;
     } else {
       loginUser(state);
+      setTimeout(okey, 1000);
     }
   }
 
   return (
     <div className={cl.container}>
-      <ArrowBackIosNewIcon className={cl.back} />
+      <Link href="/registration">
+        <ArrowBackIosNewIcon className={cl.back} />
+      </Link>
       <div className={cl.main}>
         <div className={cl.logo}>
           <Image src={logo} alt="logo" className={cl.logo} />
@@ -106,7 +119,6 @@ const Autorization = () => {
             variant="contained"
             className={cl.button}
             onClick={() => check()}
-            type="submit"
           >
             ВОЙТИ
           </Button>

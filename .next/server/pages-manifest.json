@@ -1,10 +1,7 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-<<<<<<< HEAD
   "/_document": "pages/_document.js",
+  "/[token]": "pages/[token].js",
   "/category/[id]": "pages/category/[id].js"
-=======
-  "/_document": "pages/_document.js"
->>>>>>> feature/checkout
 }

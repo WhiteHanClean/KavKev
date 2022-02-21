@@ -8,13 +8,6 @@ import { PersistGate } from "redux-persist/integration/react";
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }) {
   return (
-<<<<<<< HEAD
-      <Layout>
-        <Provider store={store}>
-          <Component {...pageProps} />
-        </Provider>
-      </Layout>
-=======
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Layout>
@@ -24,6 +17,5 @@ export default function MyApp({ Component, pageProps }) {
         </Layout>
       </PersistGate>
     </Provider>
->>>>>>> tariel2
   );
 }

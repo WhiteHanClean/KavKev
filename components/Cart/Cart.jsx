@@ -5,7 +5,8 @@ import Image from "next/image";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-// import BreadLoveSosaTwo from "../Breadcrumbs/BreadLoveSosaTwo"
+import Link from "next/link";
+import BreadLoveSosaTwo from "../Breadcrumbs/BreadLoveSosaTwo"
 const Cart = () => {
   const dispatch = useDispatch();
 
@@ -58,6 +59,7 @@ const Cart = () => {
 
   return (
     <>
+      <BreadLoveSosaTwo />
       <div className={cl.cart_container}>
         <div>
           {!!afterCart?.length &&
@@ -104,6 +106,7 @@ const Cart = () => {
               <p>Итого</p>
               <p>{total} сом</p>
             </div>
+            <Link href="/checkout">
             <Button
               variant="contained"
               style={{ background: "orangered" }}
@@ -111,6 +114,7 @@ const Cart = () => {
             >
               Оформить заказ
             </Button>
+            </Link>
           </div>
         </div>
       </div>

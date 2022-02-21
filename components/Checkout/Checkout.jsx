@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import cl from "./Checkout.module.scss";
 import logo from "../../assets/logo2.png";
 import modalImg from "../../assets/modalBusket.png";
-import {
-  Button,
-  Modal,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Modal, TextField, Typography } from "@mui/material";
 import Image from "next/image";
 import axios from "axios";
 import { Box } from "@mui/system";
+import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../redux/forCart/cartSlice";
 
 const modalStyle = {
   position: "absolute",
@@ -28,13 +26,18 @@ const modalStyle = {
 };
 
 function Checkout() {
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
   const [text, setText] = useState("");
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => (
+    setOpen(false),
+    dispatch(clearCart())
+    );
   function setChangeText(e) {
     setText(e.target.value);
   }
+
   async function submit() {
     if (text.trim() === "") {
       console.log("error");
@@ -63,7 +66,7 @@ function Checkout() {
   return (
     <div className={cl.container}>
       <div className={cl.logo}>
-        <Image src={logo} alt={"loog"}/>
+        <Image src={logo} alt={"loog"} />
       </div>
       <div className={cl.content}>
         <Typography
@@ -89,9 +92,7 @@ function Checkout() {
           С вами свяжутся по номеру
         </Typography>
       </div>
-      <button onClick={submit}>
-        Оформить
-      </button>
+      <button onClick={submit}>Оформить</button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -118,22 +119,24 @@ function Checkout() {
               alt="QR"
             />
           </div>
-          <Button
-            onClick={handleClose}
-            variant="contained"
-            style={{
-              backgroundImage:
-                "linear-gradient(93.26deg, #4E53FF 9.35%, #2B23BD 88.89%%)",
-              width: "100%",
-              display: "block",
-              marginTop: "30px",
-              height: "70px",
-            }}
-          >
-            <Typography component="h4" variant="h4">
-              OK
-            </Typography>
-          </Button>
+          <Link href="/">
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              style={{
+                backgroundImage:
+                  "linear-gradient(93.26deg, #4E53FF 9.35%, #2B23BD 88.89%%)",
+                width: "100%",
+                display: "block",
+                marginTop: "30px",
+                height: "70px",
+              }}
+            >
+              <Typography component="h4" variant="h4">
+                OK
+              </Typography>
+            </Button>
+          </Link>
         </Box>
       </Modal>
     </div>

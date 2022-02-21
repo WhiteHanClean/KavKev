@@ -2,7 +2,6 @@ import * as React from 'react';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from 'next/link';
 import classes from './BreadCrumba.module.scss';
-import { useRouter } from 'next/router';
 
 function handleClick(event) {
   event.preventDefault();
@@ -10,10 +9,7 @@ function handleClick(event) {
 
 
 
-export default function BasicBreadcrumbs(id , title) {
-  const router = useRouter();
-
-  console.log(router)
+export default function BasicBreadcrumbs() {
   return (
     <div
       style={{ background: 'white' }}
@@ -21,22 +17,21 @@ export default function BasicBreadcrumbs(id , title) {
       onClick={handleClick}
       className={classes.conta}
     >
-      <Breadcrumbs aria-label='breadcrumb'>
+      <Breadcrumbs>
         <Link underline='hover' color='inherit' href='/'>
           <a
             style={{ textDecoration: 'none', color: 'black' }}
-            onClick
             className={classes.liink}
           >
             Главное меню
           </a>
         </Link>
-        <Link underline='hover' color='inherit' href={`/category/${id}`}>
+        <Link underline='hover' color='inherit' href={`/category/1`}>
           <a
             style={{ textDecoration: 'none', color: 'black' }}
             className={classes.liink}
           >
-            Категории {title}
+            Категории 
           </a>
         </Link>
         <Link underline='hover' color='inherit' href='/cart'>

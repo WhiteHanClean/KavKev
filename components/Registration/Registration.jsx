@@ -63,7 +63,7 @@ function Registration() {
               id='outlined-basic_1'
               label='Телефон'
               variant='outlined'
-              type='number'
+              // type='number'
               name='username'
               value={values.username}
               onChange={handleChange}
@@ -114,7 +114,7 @@ function Registration() {
                 Регистрация
               </Button>
               <div>
-                <Link href='/'>
+                <Link href='/autorization'>
                   <a>
                     <span>Уже есть аккаунт ?</span>
                     <Button
