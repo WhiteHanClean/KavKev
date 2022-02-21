@@ -10,10 +10,7 @@ const initialState = {
   error: null,
   ids: [],
   entities: {},
-  about_category: {
-    id: null,
-    category: '',
-  },
+  category: {},
 };
 
 export const categoryAdapter = createEntityAdapter();
@@ -23,10 +20,21 @@ export const categorySelectors = categoryAdapter.getSelectors(
 
 export const getAllCategoryEntities = createAsyncThunk(
   'category/getAllCategoryEntities',
+  async () => {
+    try {
+      const { data } = await $api.get(`/category/`);
+      return data;
+    } catch (e) {
+      return e.error.message;
+    }
+  }
+);
+
+export const getCategory = createAsyncThunk(
+  'category/getCategory',
   async (id) => {
     try {
-      const { data } = await $api.get(`/category/${id}/`);
-      // const data2 = await $api.get('/product');
+      const { data } = await $api.get(`/category/${id}`);
       return data;
     } catch (e) {
       return e.error.message;
@@ -43,13 +51,23 @@ export const categorySlice = createSlice({
       state.loading = true;
     });
     builder.addCase(getAllCategoryEntities.fulfilled, (state, action) => {
-      categoryAdapter.setAll(state, action.payload.products);
-      state.about_category.category = action.payload.category;
-      state.about_category.id = action.payload.id;
+      categoryAdapter.setAll(state, action.payload);
       state.loading = false;
       state.error = null;
     });
     builder.addCase(getAllCategoryEntities.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+
+    builder.addCase(getCategory.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getCategory.fulfilled, (state, action) => {
+      state.loading = false;
+      state.category = action.payload;
+    });
+    builder.addCase(getCategory.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });

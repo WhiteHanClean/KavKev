@@ -27,7 +27,6 @@ const Cart = () => {
       },
     })
       .then((res) => {
-        console.log(res);
         setAfterCarts(res.data[0].all_products);
         setTotal(res.data[0].sum_price);
       })

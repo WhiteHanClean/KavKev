@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination, Navigation } from 'swiper';
+import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper';
 import logo from '../assets/logo2.png';
 import logo2 from '../assets/lol.jpg';
 import Logos from '../components/logos';
@@ -11,63 +11,31 @@ import 'swiper/css/navigation';
 import ICard from '../components/ICard/ICard';
 import { useRouter } from 'next/router';
 import MainSwiper from '../components/MainSwiper/MainSwiper';
-const imagesmain = [];
 import Head from 'next/head';
 import Vegetables from '../components/Vegetables/Vegetables';
 
-const array = [
-  {
-    name: 'moloko',
-    id: 1,
-    image: logo2,
-  },
-  {
-    name: 'мясо',
-    id: 2,
-    image: logo2,
-  },
-  {
-    name: 'idi nuhui',
-    id: 3,
-    image: logo2,
-  },
-  {
-    name: 'wsef',
-    id: 4,
-    image: logo2,
-  },
-  {
-    name: 'wsefaw',
-    id: 4,
-    image: logo2,
-  },
-  {
-    name: 'wsefaw',
-    id: 4,
-    image: logo2,
-  },
-  {
-    name: 'wsefaw',
-    id: 4,
-    image: logo2,
-  },
-  {
-    name: 'wsefaw',
-    id: 4,
-    image: logo2,
-  },
-  {
-    name: 'кусок Залупы',
-    id: 5,
-    image: logo2,
-  },
-];
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getAllCategoryEntities,
+  categorySelectors,
+} from '../redux/products/category.slice';
+
 const index = () => {
   const [width, setWidth] = useState(0);
   const handleWindowResize = () => {
     setWidth(window.innerWidth);
   };
+
+  const allCategory = useSelector((state) =>
+    categorySelectors.selectAll(state)
+  );
+
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllCategoryEntities());
+  }, []);
   useEffect(() => {
     if (window.localStorage.getItem('userToken')) {
       return;
@@ -76,10 +44,9 @@ const index = () => {
     }
   }, []);
   useEffect(() => {
-    // component is mounted and window is available
+    // component is mounted and window is available)
     handleWindowResize();
     window.addEventListener('resize', handleWindowResize);
-    // unsubscribe from the event on component unmount
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
   const keywords = `kavkev, kev kev, кавкев, кав кев,насвай ураган, сендвичи, сендвичи кав кев, сыры, сендвичи бишкек, бишкек КАВКЕВ,бишкек кафкев, каф-кев, кав-КЕВ, КАв-кев, СЫРЫ, сендвичи Питер`;
@@ -127,7 +94,7 @@ const index = () => {
           }}
           navigation={width <= 550 ? false : true}
           pagination={{ clickable: true }}
-          modules={[EffectCoverflow, Pagination, Navigation]}
+          modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
           style={{
             width: '90%',
             padding: '40px 0px 40px 0px',
@@ -135,7 +102,7 @@ const index = () => {
             marginBottom: '100px',
           }}
         >
-          {array.map((item, index) => {
+          {allCategory.map((item, index) => {
             return (
               <SwiperSlide key={`item_${index}_swipe_slide`}>
                 <ICard item={item} key={item.id} />

@@ -37,16 +37,16 @@ const CartModal = () => {
       <Badge badgeContent={cartItems.length} color="success">
         <ShoppingCartIcon
           onClick={handleClick}
-          style={{ fontSize: "50px", color: "red", cursor: "pointer" }}
+          style={{ fontSize: '50px', color: 'red', cursor: 'pointer' }}
         />
       </Badge>
       <Menu
-        id="basic-menu"
+        id='basic-menu'
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          "aria-labelledby": "basic-button",
+          'aria-labelledby': 'basic-button',
         }}
       >
         <div className={cl.menushka}>
