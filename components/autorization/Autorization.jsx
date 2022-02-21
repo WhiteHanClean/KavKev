@@ -49,7 +49,9 @@ const Autorization = () => {
   }
 
   const okey = () => {
-    if (window.localStorage.getItem("userToken")) {
+    if (window.localStorage.getItem("token")){
+      router.push(`/${localStorage.getItem("token")}`)
+    } else if (window.localStorage.getItem("userToken")) {
       router.push("/");
     } else {
       return;
