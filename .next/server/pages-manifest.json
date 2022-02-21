@@ -1,7 +1,17 @@
 {
+  "/[token]": "pages/[token].html",
   "/_app": "pages/_app.js",
+  "/autorization": "pages/autorization.html",
+  "/cart": "pages/cart.html",
+  "/category": "pages/category.html",
+  "/category/[id]": "pages/category/[id].html",
+  "/checkout": "pages/checkout.html",
+  "/": "pages/index.html",
+  "/product_detail/product-detail": "pages/product_detail/product-detail.html",
+  "/profile": "pages/profile.html",
+  "/registration": "pages/registration.html",
+  "/requirements": "pages/requirements.html",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/profile": "pages/profile.js",
-  "/[token]": "pages/[token].js"
+  "/404": "pages/404.html"
 }

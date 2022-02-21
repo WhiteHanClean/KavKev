@@ -1,5 +1,4 @@
 import React from 'react';
-import classes from './detail.module.scss';
 import { useState } from 'react';
 import logo2 from '../../assets/yaLox.png'
 import logo from '../../assets/logo2.png';

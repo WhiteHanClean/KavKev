@@ -4,7 +4,6 @@ import { Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import cl from "../Cart/CartModal.module.scss";
 import CartModalList from "./CartModalList";
-import Link from "next/link";
 import { cartSelectors, sendCartDataToApi } from '../../redux/forCart/cartSlice'
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
